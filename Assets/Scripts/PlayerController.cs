@@ -8,8 +8,25 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D Rb;
     [SerializeField]
     private Animator Anim;
-
+    private bool collided;
     private bool IsGrounded = true;
+    private GameObject Drop;
+
+
+   
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Collectible")
+        {
+            this.collided = true;
+            this.Drop = other.gameObject;
+        }
+    }
+
+    public void OnTriggerExit2D()
+    {
+        this.collided = false;
+    }
 
 
     // Start is called before the first frame update
@@ -44,6 +61,17 @@ public class PlayerController : MonoBehaviour
         {
             Rb.velocity = new Vector2(Rb.velocity.x, 5);
             this.IsGrounded = false;
+        }
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            if (this.collided)
+            {
+                Destroy(this.Drop); 
+            }
+            else
+            {
+                Debug.Log("Space key was pressed.");
+            }
         }
 
 
