@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnTriggerExit2D()
+    public void OnTriggerExit2D(Collider2D other)
     {
         this.collided = false;
     }
