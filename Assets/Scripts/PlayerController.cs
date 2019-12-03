@@ -21,11 +21,25 @@ public class PlayerController : MonoBehaviour
             this.collided = true;
             this.Drop = other.gameObject;
         }
+
+    }
+
+    public void OnCollisionEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Foreground")
+        {
+            this.IsGrounded = true;
+        }
     }
 
     public void OnTriggerExit2D(Collider2D other)
     {
         this.collided = false;
+    }
+
+    public void OnCollisionExit2D(Collider2D other)
+    {
+        this.IsGrounded = false;
     }
 
 
@@ -53,14 +67,17 @@ public class PlayerController : MonoBehaviour
         }
 
         else 
-        {
-             this.Anim.SetBool("Run", false);
+        {   
+            this.Anim.SetBool("Run", false);
         }
 
         if(Input.GetKey(KeyCode.Space))
-        {
-            Rb.velocity = new Vector2(Rb.velocity.x, 5);
-            this.IsGrounded = false;
+        {   
+            if(this.IsGrounded)
+            {
+                Rb.velocity = new Vector2(Rb.velocity.x, 5);
+                this.IsGrounded = false;
+            }
         }
         if(Input.GetKeyDown(KeyCode.E))
         {
@@ -72,6 +89,10 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Space key was pressed.");
             }
+        }
+
+        if(this.gameObject.transform.position.y <= -10.0f) {
+            this.gameObject.transform.position = new Vector3(0.0f,1.0f,0.0f);
         }
 
 
