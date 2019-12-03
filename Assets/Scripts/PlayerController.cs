@@ -90,11 +90,11 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Space key was pressed.");
             }
         }
+    }
 
-        if(this.gameObject.transform.position.y <= -10.0f) {
-            this.gameObject.transform.position = new Vector3(0.0f,1.0f,0.0f);
-        }
-
-
+    // If something kills the player, they return to the starting position
+    public void Die()
+    {
+        this.gameObject.transform.position = new Vector3(0.0f,1.0f,0.0f);
     }
 }
