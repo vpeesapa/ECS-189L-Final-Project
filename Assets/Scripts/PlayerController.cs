@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Animator Anim;
     private bool collided;
-    private bool IsGrounded = true;
+    private bool IsGrounded = false;
     private GameObject Drop;
 
 
@@ -22,24 +22,21 @@ public class PlayerController : MonoBehaviour
             this.Drop = other.gameObject;
         }
 
-    }
-
-    public void OnCollisionEnter2D(Collider2D other)
-    {
         if(other.gameObject.tag == "Foreground")
         {
             this.IsGrounded = true;
         }
+
     }
 
     public void OnTriggerExit2D(Collider2D other)
     {
         this.collided = false;
-    }
 
-    public void OnCollisionExit2D(Collider2D other)
-    {
-        this.IsGrounded = false;
+        if(other.gameObject.tag == "Foreground")
+        {
+            this.IsGrounded = true;
+        }
     }
 
 
@@ -68,6 +65,7 @@ public class PlayerController : MonoBehaviour
 
         else 
         {   
+            Rb.velocity = new Vector2(0.0f,Rb.velocity.y);
             this.Anim.SetBool("Run", false);
         }
 
@@ -77,6 +75,7 @@ public class PlayerController : MonoBehaviour
             {
                 Rb.velocity = new Vector2(Rb.velocity.x, 5);
                 this.IsGrounded = false;
+                this.Anim.SetBool("Run",false);
             }
         }
         if(Input.GetKeyDown(KeyCode.E))
