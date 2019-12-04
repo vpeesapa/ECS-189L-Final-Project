@@ -88,13 +88,21 @@ public class PlayerController : MonoBehaviour
         if(horizontalMovement < 0.0f)
         {
             this.transform.localScale = new Vector2(-1, 1);
-            this.Anim.SetBool("Run", true);
+            if(this.IsGrounded)
+            {
+                // The run animation should only work while on the ground.
+                this.Anim.SetBool("Run", true);
+            }
         }
 
         else if(horizontalMovement > 0.0f)
         {
             this.transform.localScale = new Vector2(1, 1);
-            this.Anim.SetBool("Run", true);
+            if(this.IsGrounded)
+            {
+                // The run animation should only work while on the ground.
+                this.Anim.SetBool("Run", true);
+            }
         }
 
         else
