@@ -6,10 +6,16 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D Rb;
     [SerializeField] private Animator Anim;
+    [SerializeField] private GameObject SpawnLocation;
     [SerializeField] private float NormalSpeed = 5.0f;
     [SerializeField] private float FastSpeed = 7.5f;
+    [SerializeField] private float JumpStrength = 100.0f;
+    [SerializeField] private float Gravity = -9.8f;
 
-    private bool collided;
+    private bool IsJumping = false;
+
+
+    private bool Collided;
     private bool IsGrounded = false;
     private GameObject Drop;
 
@@ -19,24 +25,47 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Collectible")
         {
-            this.collided = true;
+            this.Collided = true;
             this.Drop = other.gameObject;
         }
 
-        if(other.gameObject.tag == "Foreground")
-        {
-            this.IsGrounded = true;
-        }
+        // if(other.gameObject.tag == "Foreground")
+        // {
+        //     this.IsGrounded = true;
+        // }
 
     }
 
     public void OnTriggerExit2D(Collider2D other)
     {
-        this.collided = false;
+        this.Collided = false;
 
-        if(other.gameObject.tag == "Foreground")
+        // if(other.gameObject.tag == "Foreground")
+        // {
+        //     this.IsGrounded = true;
+        // }
+    }
+
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("Ground"))
         {
-            this.IsGrounded = true;
+            this.IsJumping = false;
+            this.Rb.velocity = Vector2.zero;
+        }
+
+        else if(other.gameObject.CompareTag("Platform"))
+        {
+            this.IsJumping = false;
+            this.gameObject.GetComponent<BoxCollider2D>().transform.SetParent(other.transform);
+        }
+    }
+
+    public void OnCollisionExit2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("Platform"))
+        {
+            this.gameObject.GetComponent<BoxCollider2D>().transform.SetParent(null);
         }
     }
 
@@ -69,7 +98,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         float moveSpeed = this.NormalSpeed;
 
@@ -80,20 +109,21 @@ public class PlayerController : MonoBehaviour
 
         float horizontalMovement = Input.GetAxis("Horizontal");
         float movementDelta = moveSpeed * horizontalMovement * Time.deltaTime;
-        this.transform.position += new Vector3(movementDelta, 0.0f, this.transform.position.z);
+        this.transform.position += new Vector3(movementDelta, 0.0f, 0.0f);
         updateMoveAnimation(horizontalMovement);
 
-
-        if(Input.GetKey(KeyCode.Space) && this.IsGrounded)
+        if(Input.GetKey(KeyCode.Space) && !this.IsJumping)
         {   
-            Rb.velocity = new Vector2(Rb.velocity.x, 5);
-            this.IsGrounded = false;
-            this.Anim.SetBool("Run",false);
+            this.IsJumping = true;
+            this.Rb.AddForce(new Vector2(this.Rb.velocity.x, this.JumpStrength));
         }
+    }
 
+    void Update()
+    {
         if(Input.GetKeyDown(KeyCode.E))
         {
-            if (this.collided)
+            if(this.Collided)
             {
                 Destroy(this.Drop); 
             }
@@ -107,6 +137,6 @@ public class PlayerController : MonoBehaviour
     // If something kills the player, they return to the starting position
     public void Die()
     {
-        this.gameObject.transform.position = new Vector3(0.0f,1.0f,0.0f);
+        this.gameObject.transform.position = this.SpawnLocation.transform.position;
     }
 }
