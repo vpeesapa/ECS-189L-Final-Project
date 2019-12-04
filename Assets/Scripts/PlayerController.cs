@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float NormalSpeed = 5.0f;
     [SerializeField] private float FastSpeed = 7.5f;
     [SerializeField] private float JumpStrength = 100.0f;
-    [SerializeField] private float Gravity = -9.8f;
 
     private bool IsJumping = false;
 
@@ -118,6 +117,11 @@ public class PlayerController : MonoBehaviour
             this.Anim.SetBool("Run",false);
             gameObject.GetComponent<AudioSource>().Play();
         }
+
+        if (Rb.velocity.y < 0)
+        {
+            Rb.velocity += (Vector2.up * Physics.gravity.y * Time.deltaTime);
+        }
     }
 
     void Update()
@@ -130,11 +134,6 @@ public class PlayerController : MonoBehaviour
             }
      
         }
-
-        if (Rb.velocity.y < 0)
-        {
-            Rb.velocity += Vector2.up* Physics.gravity.y  * Time.deltaTime;
-           }
     }
 
     // If something kills the player, they return to the starting position
