@@ -69,7 +69,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -116,6 +115,8 @@ public class PlayerController : MonoBehaviour
         {   
             this.IsJumping = true;
             this.Rb.AddForce(new Vector2(this.Rb.velocity.x, this.JumpStrength));
+            this.Anim.SetBool("Run",false);
+            gameObject.GetComponent<AudioSource>().Play();
         }
     }
 
@@ -127,11 +128,13 @@ public class PlayerController : MonoBehaviour
             {
                 Destroy(this.Drop); 
             }
-            else
-            {
-                Debug.Log("Space key was pressed.");
-            }
+     
         }
+
+        if (Rb.velocity.y < 0)
+        {
+            Rb.velocity += Vector2.up* Physics.gravity.y  * Time.deltaTime;
+           }
     }
 
     // If something kills the player, they return to the starting position
