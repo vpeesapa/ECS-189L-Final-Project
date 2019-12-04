@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float NormalSpeed = 5.0f;
     [SerializeField] private float FastSpeed = 7.5f;
     [SerializeField] private float JumpStrength = 100.0f;
+    [SerializeField] private float JumpTime;
+    private float JumpTimeCounter;
 
     private bool IsJumping = false;
 
@@ -49,21 +51,27 @@ public class PlayerController : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Ground"))
         {
-            this.IsJumping = false;
+            this.IsGrounded = true;
             this.Rb.velocity = Vector2.zero;
         }
 
         else if(other.gameObject.CompareTag("Platform"))
         {
-            this.IsJumping = false;
+            this.IsGrounded = true;
             this.gameObject.GetComponent<BoxCollider2D>().transform.SetParent(other.transform);
         }
     }
 
     public void OnCollisionExit2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("Platform"))
+        if(other.gameObject.CompareTag("Ground"))
         {
+            this.IsGrounded = false;
+        }
+
+        else if(other.gameObject.CompareTag("Platform"))
+        {
+            this.IsGrounded = false;
             this.gameObject.GetComponent<BoxCollider2D>().transform.SetParent(null);
         }
     }
@@ -105,27 +113,47 @@ public class PlayerController : MonoBehaviour
             moveSpeed = this.FastSpeed;
         }
 
-        float horizontalMovement = Input.GetAxis("Horizontal");
-        float movementDelta = moveSpeed * horizontalMovement * Time.deltaTime;
-        this.transform.position += new Vector3(movementDelta, 0.0f, 0.0f);
+        float horizontalMovement = Input.GetAxisRaw("Horizontal");
+        this.Rb.velocity = new Vector2(horizontalMovement * moveSpeed, this.Rb.velocity.y);
+        //float movementDelta = moveSpeed * horizontalMovement * Time.deltaTime;
+        //this.transform.position += new Vector3(movementDelta, 0.0f, 0.0f);
         updateMoveAnimation(horizontalMovement);
-
-        if(Input.GetKey(KeyCode.Space) && !this.IsJumping)
-        {   
-            this.IsJumping = true;
-            this.Rb.AddForce(new Vector2(this.Rb.velocity.x, this.JumpStrength));
-            this.Anim.SetBool("Run",false);
-            gameObject.GetComponent<AudioSource>().Play();
-        }
-
-        if (Rb.velocity.y < 0)
-        {
-            Rb.velocity += (Vector2.up * Physics.gravity.y * Time.deltaTime);
-        }
     }
 
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Space) && this.IsGrounded)
+        {   
+            this.IsGrounded = false;
+            this.IsJumping = true;
+            this.JumpTimeCounter = this.JumpTime;
+            this.Rb.velocity = Vector2.up * this.JumpStrength;
+            //this.Rb.AddForce(new Vector2(this.Rb.velocity.x, this.JumpStrength));
+            this.Anim.SetBool("Run",false);
+            gameObject.GetComponent<AudioSource>().Play();
+        }
+
+        if(Input.GetKey(KeyCode.Space) && this.IsJumping)
+        {
+            if(this.JumpTimeCounter > 0.0f)
+            {
+                this.Rb.velocity = Vector2.up * this.JumpStrength;
+                this.JumpTimeCounter -= Time.deltaTime;
+            }
+
+            else
+            {
+                this.IsJumping = false;
+            }
+        }
+
+        if(Input.GetKeyUp(KeyCode.Space))
+        {
+            this.IsJumping = false;
+        }
+
+
+
         if(Input.GetKeyDown(KeyCode.E))
         {
             if(this.Collided)
