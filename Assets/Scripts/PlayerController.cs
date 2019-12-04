@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float FastSpeed = 7.5f;
 
     private bool collided;
-    private bool IsGrounded = false;
+    private bool IsGrounded = true;
     private GameObject Drop;
 
 
@@ -23,10 +23,7 @@ public class PlayerController : MonoBehaviour
             this.Drop = other.gameObject;
         }
 
-        if(other.gameObject.tag == "Foreground")
-        {
-            this.IsGrounded = true;
-        }
+        
 
     }
 
@@ -34,12 +31,16 @@ public class PlayerController : MonoBehaviour
     {
         this.collided = false;
 
-        if(other.gameObject.tag == "Foreground")
+       
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Foreground")
         {
             this.IsGrounded = true;
         }
     }
-
 
     // Start is called before the first frame update
     void Start()
@@ -84,11 +85,13 @@ public class PlayerController : MonoBehaviour
         updateMoveAnimation(horizontalMovement);
 
 
-        if(Input.GetKey(KeyCode.Space) && this.IsGrounded)
-        {   
-            Rb.velocity = new Vector2(Rb.velocity.x, 5);
+        if(Input.GetKeyDown(KeyCode.Space) && this.IsGrounded)
+        {
+ 
+            Rb.velocity = new Vector2(Rb.velocity.x, 6.5f);
             this.IsGrounded = false;
             this.Anim.SetBool("Run",false);
+            gameObject.GetComponent<AudioSource>().Play();
         }
 
         if(Input.GetKeyDown(KeyCode.E))
@@ -97,11 +100,13 @@ public class PlayerController : MonoBehaviour
             {
                 Destroy(this.Drop); 
             }
-            else
-            {
-                Debug.Log("Space key was pressed.");
-            }
+     
         }
+
+        if (Rb.velocity.y < 0)
+        {
+            Rb.velocity += Vector2.up* Physics.gravity.y  * Time.deltaTime;
+           }
     }
 
     // If something kills the player, they return to the starting position
