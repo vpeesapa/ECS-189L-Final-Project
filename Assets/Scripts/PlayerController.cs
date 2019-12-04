@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    private Rigidbody2D Rb;
-    [SerializeField]
-    private Animator Anim;
+    [SerializeField] private Rigidbody2D Rb;
+    [SerializeField] private Animator Anim;
+    [SerializeField] private float NormalSpeed = 5.0f;
+    [SerializeField] private float FastSpeed = 7.5f;
+
     private bool collided;
     private bool IsGrounded = false;
     private GameObject Drop;
@@ -46,38 +47,50 @@ public class PlayerController : MonoBehaviour
         Rb.freezeRotation = true;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void updateMoveAnimation(float horizontalMovement)
     {
-        if(Input.GetKey(KeyCode.A))
+        if(horizontalMovement < 0.0f)
         {
-            Rb.velocity = new Vector2(-5, Rb.velocity.y);
             this.transform.localScale = new Vector2(-1, 1);
             this.Anim.SetBool("Run", true);
         }
 
-        else if(Input.GetKey(KeyCode.D))
+        else if(horizontalMovement > 0.0f)
         {
-            Rb.velocity = new Vector2(5, Rb.velocity.y);
             this.transform.localScale = new Vector2(1, 1);
             this.Anim.SetBool("Run", true);
         }
 
-        else 
-        {   
-            Rb.velocity = new Vector2(0.0f,Rb.velocity.y);
+        else
+        {
             this.Anim.SetBool("Run", false);
         }
+    }
 
-        if(Input.GetKey(KeyCode.Space))
-        {   
-            if(this.IsGrounded)
-            {
-                Rb.velocity = new Vector2(Rb.velocity.x, 5);
-                this.IsGrounded = false;
-                this.Anim.SetBool("Run",false);
-            }
+
+    void Update()
+    {
+        float moveSpeed = this.NormalSpeed;
+
+        if(Input.GetKey(KeyCode.Z))
+        {
+            moveSpeed = this.FastSpeed;
         }
+
+        float horizontalMovement = Input.GetAxis("Horizontal");
+        float movementDelta = moveSpeed * horizontalMovement * Time.deltaTime;
+        this.transform.position += new Vector3(movementDelta, 0.0f, this.transform.position.z);
+        updateMoveAnimation(horizontalMovement);
+
+
+        if(Input.GetKey(KeyCode.Space) && this.IsGrounded)
+        {   
+            Rb.velocity = new Vector2(Rb.velocity.x, 5);
+            this.IsGrounded = false;
+            this.Anim.SetBool("Run",false);
+        }
+
         if(Input.GetKeyDown(KeyCode.E))
         {
             if (this.collided)
