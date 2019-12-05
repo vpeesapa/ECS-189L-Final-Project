@@ -61,6 +61,12 @@ public class PlayerController : MonoBehaviour
             this.IsGrounded = true;
             this.gameObject.GetComponent<BoxCollider2D>().transform.SetParent(other.transform);
         }
+
+        else if(other.gameObject.CompareTag("Saw"))
+        {
+            // Kills the player upon contact with the saw.
+            this.Die();
+        }
     }
 
     public void OnCollisionExit2D(Collision2D other)
@@ -89,7 +95,7 @@ public class PlayerController : MonoBehaviour
         if(horizontalMovement < 0.0f)
         {
             this.transform.localScale = new Vector2(-1, 1);
-            if(this.IsGrounded)
+            if(!this.IsJumping)
             {
                 // The run animation should only work while on the ground.
                 this.Anim.SetBool("Run", true);
@@ -99,7 +105,7 @@ public class PlayerController : MonoBehaviour
         else if(horizontalMovement > 0.0f)
         {
             this.transform.localScale = new Vector2(1, 1);
-            if(this.IsGrounded)
+            if(!this.IsJumping)
             {
                 // The run animation should only work while on the ground.
                 this.Anim.SetBool("Run", true);
@@ -176,6 +182,6 @@ public class PlayerController : MonoBehaviour
     // If something kills the player, the level is reloaded
     public void Die()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        this.gameObject.transform.position = this.SpawnLocation.transform.position;
     }
 }
