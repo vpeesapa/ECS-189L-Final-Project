@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
         else if(other.gameObject.CompareTag("Saw"))
         {
-            // Kills the player upon contact with the saw.
+            // Kills the player upon contact with the blade.
             this.Die();
         }
     }
