@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -172,9 +173,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // If something kills the player, they return to the starting position
+    // If something kills the player, the level is reloaded
     public void Die()
     {
-        this.gameObject.transform.position = this.SpawnLocation.transform.position;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
