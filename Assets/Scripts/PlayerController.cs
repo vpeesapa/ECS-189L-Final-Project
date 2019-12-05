@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Rb.freezeRotation = true;
+        this.transform.position = this.SpawnLocation.transform.position;
     }
 
 
