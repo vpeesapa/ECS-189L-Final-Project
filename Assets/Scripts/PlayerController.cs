@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
             this.Rb.velocity = Vector2.zero;
         }
         
-        else if(other.gameObject.CompareTag("Saw") || other.gameObject.CompareTag("Acid"))
+        else if(other.gameObject.CompareTag("Saw") || other.gameObject.CompareTag("Acid") || other.gameObject.CompareTag("Spike"))
         {
             // Kills the player upon contact with the blade.
             this.Die();
