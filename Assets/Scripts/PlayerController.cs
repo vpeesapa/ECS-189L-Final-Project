@@ -12,15 +12,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float FastSpeed = 7.5f;
     [SerializeField] private float JumpStrength = 100.0f;
     [SerializeField] private float JumpTime;
+
     private float JumpTimeCounter;
-
     private bool IsJumping = false;
-
-
     private bool Collided;
     private bool IsGrounded = false;
     private GameObject Drop;
-
+    private int GemsCollected = 0;
 
    
     public void OnTriggerEnter2D(Collider2D other)
@@ -56,10 +54,23 @@ public class PlayerController : MonoBehaviour
             this.Rb.velocity = Vector2.zero;
         }
 
+        else if(other.gameObject.CompareTag("Gem"))
+        {
+            this.GemsCollected++;
+            Debug.Log("Collected a Gem! Total Gem Count: " + this.GemsCollected.ToString());
+            Destroy(other.gameObject);
+        }
+
         else if(other.gameObject.CompareTag("Platform"))
         {
             this.IsGrounded = true;
             this.gameObject.GetComponent<BoxCollider2D>().transform.SetParent(other.transform);
+        }
+
+        else if(other.gameObject.CompareTag("Crate"))
+        {
+            this.IsGrounded = true;
+            this.Rb.velocity = Vector2.zero;
         }
 
         else if(other.gameObject.CompareTag("Saw"))
@@ -75,6 +86,11 @@ public class PlayerController : MonoBehaviour
         {
             this.IsGrounded = false;
         }
+
+        // else if(other.gameObject.CompareTag("Crate"))
+        // {
+        //     this.IsGrounded = false;
+        // }
 
         else if(other.gameObject.CompareTag("Platform"))
         {
@@ -184,5 +200,6 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         this.gameObject.transform.position = this.SpawnLocation.transform.position;
+        this.Rb.velocity = Vector2.zero;
     }
 }
