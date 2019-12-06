@@ -72,8 +72,8 @@ public class PlayerController : MonoBehaviour
             this.IsGrounded = true;
             this.Rb.velocity = Vector2.zero;
         }
-
-        else if(other.gameObject.CompareTag("Saw"))
+        
+        else if(other.gameObject.CompareTag("Saw") || other.gameObject.CompareTag("Acid"))
         {
             // Kills the player upon contact with the blade.
             this.Die();
