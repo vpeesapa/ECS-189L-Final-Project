@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float FastSpeed = 7.5f;
     [SerializeField] private float JumpStrength = 100.0f;
     [SerializeField] private float JumpTime;
-    [SerializeField] private GameObject Camera;
+    //[SerializeField] private GameObject Camera;
 
     private float JumpTimeCounter;
     private bool IsJumping = false;
@@ -73,6 +73,17 @@ public class PlayerController : MonoBehaviour
         {
             this.IsGrounded = true;
             this.Rb.velocity = Vector2.zero;
+        }
+
+        else if(other.gameObject.CompareTag("Spikes"))
+        {
+            this.Die();
+        }
+
+        else if(other.gameObject.CompareTag("Enemy"))
+        {
+            other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            this.Die();
         }
         
         else if(other.gameObject.CompareTag("Saw") || other.gameObject.CompareTag("Acid") || other.gameObject.CompareTag("Spike"))
@@ -198,11 +209,11 @@ public class PlayerController : MonoBehaviour
         }
 
         
-        Vector3 CameraPosition = this.Camera.transform.position;
-        if (this.gameObject.transform.position.x < CameraPosition.x - 7.5f)
-        {
-            this.gameObject.transform.position = new Vector3(CameraPosition.x - 7.5f, this.gameObject.transform.position.y);
-        }
+        // Vector3 CameraPosition = this.Camera.transform.position;
+        // if (this.gameObject.transform.position.x < CameraPosition.x - 7.5f)
+        // {
+        //     this.gameObject.transform.position = new Vector3(CameraPosition.x - 7.5f, this.gameObject.transform.position.y);
+        // }
         
 
     }
