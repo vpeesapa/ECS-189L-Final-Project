@@ -31,10 +31,14 @@ public class PlayerController : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Collectible")
+        if (other.gameObject.CompareTag("Gem"))
         {
-            this.Collided = true;
-            this.Drop = other.gameObject;
+            this.GemsCollected++;
+            this.NumGemsLeft--;
+            Debug.Log("Collected a Gem! Total Gem Count: " + this.GemsCollected.ToString());
+            this.UIScore.text = this.GemsCollected.ToString();
+            this.UINumGemsLeft.text = this.NumGemsLeft.ToString();
+            other.gameObject.SetActive(false);
         }
 
         else if (other.gameObject.tag == "Spike")
@@ -66,15 +70,7 @@ public class PlayerController : MonoBehaviour
             this.Rb.velocity = Vector2.zero;
         }
 
-        else if (other.gameObject.CompareTag("Gem"))
-        {
-            this.GemsCollected++;
-            this.NumGemsLeft--;
-            Debug.Log("Collected a Gem! Total Gem Count: " + this.GemsCollected.ToString());
-            this.UIScore.text = this.GemsCollected.ToString();
-            this.UINumGemsLeft.text = this.NumGemsLeft.ToString();
-            Destroy(other.gameObject);
-        }
+        
 
         else if (other.gameObject.CompareTag("Platform"))
         {
@@ -127,7 +123,7 @@ public class PlayerController : MonoBehaviour
         Rb.freezeRotation = true;
         this.transform.position = this.SpawnLocation.transform.position;
         this.GemsCollected = 0;
-        this.UINumGemsLeft.text = this.NumGemsLeft.ToString();
+            this.UINumGemsLeft.text = this.NumGemsLeft.ToString();
     }
 
 
@@ -216,21 +212,6 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if(UILevelName.color.a != 0.0f)
-        {
-            // The name of the level slowly fades out every frame.
-            var textColor = UILevelName.color;
-            textColor.a -= Time.deltaTime;
-            UILevelName.color = textColor;
-
-            if(UIPanelImage.color.a != 0.0f)
-            {
-                // The panel that serves as a name also fades out every frame.
-                var panelColor = UIPanelImage.color;
-                panelColor.a -= Time.deltaTime;
-                UIPanelImage.color = panelColor;
-            }
-        }
     }
 
     // If something kills the player, the level is reloaded
