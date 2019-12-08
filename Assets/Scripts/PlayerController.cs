@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float FastSpeed = 7.5f;
     [SerializeField] private float JumpStrength = 100.0f;
     [SerializeField] private float JumpTime;
-    [SerializeField] private GameObject Camera;
+
 
     private float JumpTimeCounter;
     private bool IsJumping = false;
@@ -197,13 +197,7 @@ public class PlayerController : MonoBehaviour
      
         }
 
-        
-        Vector3 CameraPosition = this.Camera.transform.position;
-        if (this.gameObject.transform.position.x < CameraPosition.x - 7.5f)
-        {
-            this.gameObject.transform.position = new Vector3(CameraPosition.x - 7.5f, this.gameObject.transform.position.y);
-        }
-        
+ 
 
     }
 
