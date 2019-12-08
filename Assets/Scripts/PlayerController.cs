@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float JumpStrength = 100.0f;
     [SerializeField] private float JumpTime;
     [SerializeField] private Text UIScore;
-    //[SerializeField] private GameObject Camera;
 
     private float JumpTimeCounter;
     private bool IsJumping = false;
@@ -210,15 +209,6 @@ public class PlayerController : MonoBehaviour
             }
      
         }
-
-        
-        // Vector3 CameraPosition = this.Camera.transform.position;
-        // if (this.gameObject.transform.position.x < CameraPosition.x - 7.5f)
-        // {
-        //     this.gameObject.transform.position = new Vector3(CameraPosition.x - 7.5f, this.gameObject.transform.position.y);
-        // }
-        
-
     }
 
     // If something kills the player, the level is reloaded
