@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float JumpStrength = 100.0f;
     [SerializeField] private float JumpTime;
     [SerializeField] private Text UIScore;
+    [SerializeField] private Text UILevelName;
+    [SerializeField] private Image UIPanelImage;
+    [SerializeField] private TextMesh UINumGemsLeft;
+    [SerializeField] private int NumGemsLeft = 0;
 
     private float JumpTimeCounter;
     private bool IsJumping = false;
@@ -65,8 +69,10 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.CompareTag("Gem"))
         {
             this.GemsCollected++;
+            this.NumGemsLeft--;
             Debug.Log("Collected a Gem! Total Gem Count: " + this.GemsCollected.ToString());
             this.UIScore.text = this.GemsCollected.ToString();
+            this.UINumGemsLeft.text = this.NumGemsLeft.ToString();
             Destroy(other.gameObject);
         }
 
@@ -107,10 +113,6 @@ public class PlayerController : MonoBehaviour
             this.IsGrounded = false;
         }
 
-        // else if(other.gameObject.CompareTag("Crate"))
-        // {
-        //     this.IsGrounded = false;
-        // }
 
         else if (other.gameObject.CompareTag("Platform"))
         {
@@ -125,6 +127,7 @@ public class PlayerController : MonoBehaviour
         Rb.freezeRotation = true;
         this.transform.position = this.SpawnLocation.transform.position;
         this.GemsCollected = 0;
+        this.UINumGemsLeft.text = this.NumGemsLeft.ToString();
     }
 
 
@@ -168,8 +171,6 @@ public class PlayerController : MonoBehaviour
 
         float horizontalMovement = Input.GetAxisRaw("Horizontal");
         this.Rb.velocity = new Vector2(horizontalMovement * moveSpeed, this.Rb.velocity.y);
-        //float movementDelta = moveSpeed * horizontalMovement * Time.deltaTime;
-        //this.transform.position += new Vector3(movementDelta, 0.0f, 0.0f);
         updateMoveAnimation(horizontalMovement);
     }
 
@@ -181,7 +182,6 @@ public class PlayerController : MonoBehaviour
             this.IsJumping = true;
             this.JumpTimeCounter = this.JumpTime;
             this.Rb.velocity = Vector2.up * this.JumpStrength;
-            //this.Rb.AddForce(new Vector2(this.Rb.velocity.x, this.JumpStrength));
             this.Anim.SetBool("Run", false);
             gameObject.GetComponent<AudioSource>().Play();
         }
@@ -214,6 +214,22 @@ public class PlayerController : MonoBehaviour
                 Destroy(this.Drop);
             }
 
+        }
+
+        if(UILevelName.color.a != 0.0f)
+        {
+            // The name of the level slowly fades out every frame.
+            var textColor = UILevelName.color;
+            textColor.a -= Time.deltaTime;
+            UILevelName.color = textColor;
+
+            if(UIPanelImage.color.a != 0.0f)
+            {
+                // The panel that serves as a name also fades out every frame.
+                var panelColor = UIPanelImage.color;
+                panelColor.a -= Time.deltaTime;
+                UIPanelImage.color = panelColor;
+            }
         }
     }
 
