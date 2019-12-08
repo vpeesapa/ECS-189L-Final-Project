@@ -9,12 +9,13 @@ public class CameraController : MonoBehaviour
     [SerializeField] private GameObject RightBound;
     [SerializeField] private GameObject TopBound;
     [SerializeField] private GameObject BottomBound;
+    private Camera AttachedCamera;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        AttachedCamera = GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -22,26 +23,15 @@ public class CameraController : MonoBehaviour
     {
         Vector3 newPosition = new Vector3(this.Player.position.x, this.Player.position.y, this.Player.position.z - 1);
 
-        float orthoSize = Camera.main.orthographicSize;
-        if(newPosition.x - orthoSize <= this.LeftBound.transform.position.x)
-        {
-            newPosition.x = this.LeftBound.transform.position.x + orthoSize;
-        }
+        float verticalSize = AttachedCamera.orthographicSize;
+        float horizontalSize = AttachedCamera.aspect * verticalSize;
 
-        if(newPosition.x + orthoSize >= this.RightBound.transform.position.x)
-        {
-            newPosition.x = this.RightBound.transform.position.x - orthoSize;
-        }
-
-        if(newPosition.y + orthoSize >= this.TopBound.transform.position.y)
-        {
-            newPosition.y = this.TopBound.transform.position.y - orthoSize;
-        }
-
-        if(newPosition.y - orthoSize <= this.BottomBound.transform.position.y)
-        {
-            newPosition.y = this.BottomBound.transform.position.y + orthoSize;
-        }
+        newPosition.x = Mathf.Clamp(newPosition.x,
+                                    this.LeftBound.transform.position.x + horizontalSize,
+                                    this.RightBound.transform.position.x - horizontalSize);
+        newPosition.y = Mathf.Clamp(newPosition.y,
+                                    this.BottomBound.transform.position.y + verticalSize,
+                                    this.TopBound.transform.position.y - verticalSize);
 
         this.gameObject.transform.position = newPosition;
     }
