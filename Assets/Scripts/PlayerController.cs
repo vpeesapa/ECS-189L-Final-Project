@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,9 +22,9 @@ public class PlayerController : MonoBehaviour
     private bool IsGrounded = false;
     private GameObject Drop;
     private int GemsCollected = 0;
-    
 
-   
+
+
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Collectible")
@@ -31,6 +33,10 @@ public class PlayerController : MonoBehaviour
             this.Drop = other.gameObject;
         }
 
+        else if (other.gameObject.tag == "Spike")
+        {
+            this.Die();
+        }
         // if(other.gameObject.tag == "Foreground")
         // {
         //     this.IsGrounded = true;
@@ -50,13 +56,13 @@ public class PlayerController : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground"))
         {
             this.IsGrounded = true;
             this.Rb.velocity = Vector2.zero;
         }
 
-        else if(other.gameObject.CompareTag("Gem"))
+        else if (other.gameObject.CompareTag("Gem"))
         {
             this.GemsCollected++;
             Debug.Log("Collected a Gem! Total Gem Count: " + this.GemsCollected.ToString());
@@ -64,30 +70,30 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        else if(other.gameObject.CompareTag("Platform"))
+        else if (other.gameObject.CompareTag("Platform"))
         {
             this.IsGrounded = true;
             this.gameObject.GetComponent<BoxCollider2D>().transform.SetParent(other.transform);
         }
 
-        else if(other.gameObject.CompareTag("Crate"))
+        else if (other.gameObject.CompareTag("Crate"))
         {
             this.IsGrounded = true;
             this.Rb.velocity = Vector2.zero;
         }
 
-        else if(other.gameObject.CompareTag("Spikes"))
+        else if (other.gameObject.CompareTag("Spikes"))
         {
             this.Die();
         }
 
-        else if(other.gameObject.CompareTag("Enemy"))
+        else if (other.gameObject.CompareTag("Enemy"))
         {
             other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             this.Die();
         }
-        
-        else if(other.gameObject.CompareTag("Saw") || other.gameObject.CompareTag("Acid"))
+
+        else if (other.gameObject.CompareTag("Saw") || other.gameObject.CompareTag("Acid"))
         {
             // Kills the player upon contact with the blade.
             this.Die();
@@ -96,7 +102,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnCollisionExit2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground"))
         {
             this.IsGrounded = false;
         }
@@ -106,7 +112,7 @@ public class PlayerController : MonoBehaviour
         //     this.IsGrounded = false;
         // }
 
-        else if(other.gameObject.CompareTag("Platform"))
+        else if (other.gameObject.CompareTag("Platform"))
         {
             this.IsGrounded = false;
             this.gameObject.GetComponent<BoxCollider2D>().transform.SetParent(null);
@@ -124,20 +130,20 @@ public class PlayerController : MonoBehaviour
 
     private void updateMoveAnimation(float horizontalMovement)
     {
-        if(horizontalMovement < 0.0f)
+        if (horizontalMovement < 0.0f)
         {
             this.transform.localScale = new Vector2(-1, 1);
-            if(!this.IsJumping)
+            if (!this.IsJumping)
             {
                 // The run animation should only work while on the ground.
                 this.Anim.SetBool("Run", true);
             }
         }
 
-        else if(horizontalMovement > 0.0f)
+        else if (horizontalMovement > 0.0f)
         {
             this.transform.localScale = new Vector2(1, 1);
-            if(!this.IsJumping)
+            if (!this.IsJumping)
             {
                 // The run animation should only work while on the ground.
                 this.Anim.SetBool("Run", true);
@@ -155,7 +161,7 @@ public class PlayerController : MonoBehaviour
     {
         float moveSpeed = this.NormalSpeed;
 
-        if(Input.GetKey(KeyCode.Z))
+        if (Input.GetKey(KeyCode.Z))
         {
             moveSpeed = this.FastSpeed;
         }
@@ -169,20 +175,20 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && this.IsGrounded)
-        {   
+        if (Input.GetKeyDown(KeyCode.Space) && this.IsGrounded)
+        {
             this.IsGrounded = false;
             this.IsJumping = true;
             this.JumpTimeCounter = this.JumpTime;
             this.Rb.velocity = Vector2.up * this.JumpStrength;
             //this.Rb.AddForce(new Vector2(this.Rb.velocity.x, this.JumpStrength));
-            this.Anim.SetBool("Run",false);
+            this.Anim.SetBool("Run", false);
             gameObject.GetComponent<AudioSource>().Play();
         }
 
-        if(Input.GetKey(KeyCode.Space) && this.IsJumping)
+        if (Input.GetKey(KeyCode.Space) && this.IsJumping)
         {
-            if(this.JumpTimeCounter > 0.0f)
+            if (this.JumpTimeCounter > 0.0f)
             {
                 this.Rb.velocity = Vector2.up * this.JumpStrength;
                 this.JumpTimeCounter -= Time.deltaTime;
@@ -194,20 +200,20 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             this.IsJumping = false;
         }
 
 
 
-        if(Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if(this.Collided)
+            if (this.Collided)
             {
-                Destroy(this.Drop); 
+                Destroy(this.Drop);
             }
-     
+
         }
     }
 
