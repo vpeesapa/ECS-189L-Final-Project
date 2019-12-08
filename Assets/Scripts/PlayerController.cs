@@ -36,9 +36,10 @@ public class PlayerController : MonoBehaviour
             this.GemsCollected++;
             this.NumGemsLeft--;
             Debug.Log("Collected a Gem! Total Gem Count: " + this.GemsCollected.ToString());
+            other.gameObject.SetActive(false);
             this.UIScore.text = this.GemsCollected.ToString();
             this.UINumGemsLeft.text = this.NumGemsLeft.ToString();
-            other.gameObject.SetActive(false);
+            
         }
 
         else if (other.gameObject.tag == "Spike")
