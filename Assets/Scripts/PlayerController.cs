@@ -12,11 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float FastSpeed = 7.5f;
     [SerializeField] private float JumpStrength = 100.0f;
     [SerializeField] private float JumpTime;
-<<<<<<< HEAD
 
-=======
-    //[SerializeField] private GameObject Camera;
->>>>>>> e5491edbde1d3e4982b0215d8d4e77ae393babd6
 
     private float JumpTimeCounter;
     private bool IsJumping = false;
@@ -24,15 +20,19 @@ public class PlayerController : MonoBehaviour
     private bool IsGrounded = false;
     private GameObject Drop;
     private int GemsCollected = 0;
-    
 
-   
+
+
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Collectible")
         {
             this.Collided = true;
             this.Drop = other.gameObject;
+        }
+        else if (other.gameObject.tag == "Spike")
+        {
+            this.Die();
         }
 
         // if(other.gameObject.tag == "Foreground")
@@ -54,43 +54,43 @@ public class PlayerController : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground"))
         {
             this.IsGrounded = true;
             this.Rb.velocity = Vector2.zero;
         }
 
-        else if(other.gameObject.CompareTag("Gem"))
+        else if (other.gameObject.CompareTag("Gem"))
         {
             this.GemsCollected++;
             Debug.Log("Collected a Gem! Total Gem Count: " + this.GemsCollected.ToString());
             Destroy(other.gameObject);
         }
 
-        else if(other.gameObject.CompareTag("Platform"))
+        else if (other.gameObject.CompareTag("Platform"))
         {
             this.IsGrounded = true;
             this.gameObject.GetComponent<BoxCollider2D>().transform.SetParent(other.transform);
         }
 
-        else if(other.gameObject.CompareTag("Crate"))
+        else if (other.gameObject.CompareTag("Crate"))
         {
             this.IsGrounded = true;
             this.Rb.velocity = Vector2.zero;
         }
 
-        else if(other.gameObject.CompareTag("Spikes"))
+        else if (other.gameObject.CompareTag("Spikes"))
         {
             this.Die();
         }
 
-        else if(other.gameObject.CompareTag("Enemy"))
+        else if (other.gameObject.CompareTag("Enemy"))
         {
             other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             this.Die();
         }
-        
-        else if(other.gameObject.CompareTag("Saw") || other.gameObject.CompareTag("Acid") || other.gameObject.CompareTag("Spike"))
+
+        else if (other.gameObject.CompareTag("Saw") || other.gameObject.CompareTag("Acid") || other.gameObject.CompareTag("Spike"))
         {
             // Kills the player upon contact with the blade.
             this.Die();
@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnCollisionExit2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground"))
         {
             this.IsGrounded = false;
         }
@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
         //     this.IsGrounded = false;
         // }
 
-        else if(other.gameObject.CompareTag("Platform"))
+        else if (other.gameObject.CompareTag("Platform"))
         {
             this.IsGrounded = false;
             this.gameObject.GetComponent<BoxCollider2D>().transform.SetParent(null);
@@ -126,20 +126,20 @@ public class PlayerController : MonoBehaviour
 
     private void updateMoveAnimation(float horizontalMovement)
     {
-        if(horizontalMovement < 0.0f)
+        if (horizontalMovement < 0.0f)
         {
             this.transform.localScale = new Vector2(-1, 1);
-            if(!this.IsJumping)
+            if (!this.IsJumping)
             {
                 // The run animation should only work while on the ground.
                 this.Anim.SetBool("Run", true);
             }
         }
 
-        else if(horizontalMovement > 0.0f)
+        else if (horizontalMovement > 0.0f)
         {
             this.transform.localScale = new Vector2(1, 1);
-            if(!this.IsJumping)
+            if (!this.IsJumping)
             {
                 // The run animation should only work while on the ground.
                 this.Anim.SetBool("Run", true);
@@ -157,7 +157,7 @@ public class PlayerController : MonoBehaviour
     {
         float moveSpeed = this.NormalSpeed;
 
-        if(Input.GetKey(KeyCode.Z))
+        if (Input.GetKey(KeyCode.Z))
         {
             moveSpeed = this.FastSpeed;
         }
@@ -171,20 +171,20 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && this.IsGrounded)
-        {   
+        if (Input.GetKeyDown(KeyCode.Space) && this.IsGrounded)
+        {
             this.IsGrounded = false;
             this.IsJumping = true;
             this.JumpTimeCounter = this.JumpTime;
             this.Rb.velocity = Vector2.up * this.JumpStrength;
             //this.Rb.AddForce(new Vector2(this.Rb.velocity.x, this.JumpStrength));
-            this.Anim.SetBool("Run",false);
+            this.Anim.SetBool("Run", false);
             gameObject.GetComponent<AudioSource>().Play();
         }
 
-        if(Input.GetKey(KeyCode.Space) && this.IsJumping)
+        if (Input.GetKey(KeyCode.Space) && this.IsJumping)
         {
-            if(this.JumpTimeCounter > 0.0f)
+            if (this.JumpTimeCounter > 0.0f)
             {
                 this.Rb.velocity = Vector2.up * this.JumpStrength;
                 this.JumpTimeCounter -= Time.deltaTime;
@@ -196,40 +196,28 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             this.IsJumping = false;
         }
 
 
 
-        if(Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if(this.Collided)
+            if (this.Collided)
             {
-                Destroy(this.Drop); 
+                Destroy(this.Drop);
             }
-     
+
         }
-
-<<<<<<< HEAD
- 
-=======
-        
-        // Vector3 CameraPosition = this.Camera.transform.position;
-        // if (this.gameObject.transform.position.x < CameraPosition.x - 7.5f)
-        // {
-        //     this.gameObject.transform.position = new Vector3(CameraPosition.x - 7.5f, this.gameObject.transform.position.y);
-        // }
-        
->>>>>>> e5491edbde1d3e4982b0215d8d4e77ae393babd6
-
     }
 
-    // If something kills the player, the level is reloaded
-    public void Die()
-    {
-        this.gameObject.transform.position = this.SpawnLocation.transform.position;
-        this.Rb.velocity = Vector2.zero;
+
+        // If something kills the player, the level is reloaded
+        public void Die()
+        {
+            this.gameObject.transform.position = this.SpawnLocation.transform.position;
+            this.Rb.velocity = Vector2.zero;
+        }
     }
-}
