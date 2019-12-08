@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float JumpTime;
     [SerializeField] private Text UIScore;
     [SerializeField] private Text UILevelName;
+    [SerializeField] private Image UIPanelImage;
     [SerializeField] private TextMesh UINumGemsLeft;
     [SerializeField] private int NumGemsLeft = 0;
 
@@ -221,6 +222,14 @@ public class PlayerController : MonoBehaviour
             var textColor = UILevelName.color;
             textColor.a -= Time.deltaTime;
             UILevelName.color = textColor;
+
+            if(UIPanelImage.color.a != 0.0f)
+            {
+                // The panel that serves as a name also fades out every frame.
+                var panelColor = UIPanelImage.color;
+                panelColor.a -= Time.deltaTime;
+                UIPanelImage.color = panelColor;
+            }
         }
     }
 
