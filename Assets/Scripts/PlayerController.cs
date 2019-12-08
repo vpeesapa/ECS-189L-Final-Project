@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿
+
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float FastSpeed = 7.5f;
     [SerializeField] private float JumpStrength = 100.0f;
     [SerializeField] private float JumpTime;
-
+    [SerializeField] private Text UIScore;
 
     private float JumpTimeCounter;
     private bool IsJumping = false;
@@ -30,11 +32,11 @@ public class PlayerController : MonoBehaviour
             this.Collided = true;
             this.Drop = other.gameObject;
         }
+
         else if (other.gameObject.tag == "Spike")
         {
             this.Die();
         }
-
         // if(other.gameObject.tag == "Foreground")
         // {
         //     this.IsGrounded = true;
@@ -64,6 +66,7 @@ public class PlayerController : MonoBehaviour
         {
             this.GemsCollected++;
             Debug.Log("Collected a Gem! Total Gem Count: " + this.GemsCollected.ToString());
+            this.UIScore.text = this.GemsCollected.ToString();
             Destroy(other.gameObject);
         }
 
@@ -90,7 +93,7 @@ public class PlayerController : MonoBehaviour
             this.Die();
         }
 
-        else if (other.gameObject.CompareTag("Saw") || other.gameObject.CompareTag("Acid") || other.gameObject.CompareTag("Spike"))
+        else if (other.gameObject.CompareTag("Saw") || other.gameObject.CompareTag("Acid"))
         {
             // Kills the player upon contact with the blade.
             this.Die();
@@ -121,6 +124,7 @@ public class PlayerController : MonoBehaviour
     {
         Rb.freezeRotation = true;
         this.transform.position = this.SpawnLocation.transform.position;
+        this.GemsCollected = 0;
     }
 
 
@@ -213,11 +217,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-        // If something kills the player, the level is reloaded
-        public void Die()
-        {
-            this.gameObject.transform.position = this.SpawnLocation.transform.position;
-            this.Rb.velocity = Vector2.zero;
-        }
+    // If something kills the player, the level is reloaded
+    public void Die()
+    {
+        this.gameObject.transform.position = this.SpawnLocation.transform.position;
+        this.Rb.velocity = Vector2.zero;
     }
+}
