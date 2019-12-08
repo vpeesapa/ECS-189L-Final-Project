@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float FastSpeed = 7.5f;
     [SerializeField] private float JumpStrength = 100.0f;
     [SerializeField] private float JumpTime;
+    [SerializeField] private Text UIScore;
     //[SerializeField] private GameObject Camera;
 
     private float JumpTimeCounter;
@@ -60,6 +61,7 @@ public class PlayerController : MonoBehaviour
         {
             this.GemsCollected++;
             Debug.Log("Collected a Gem! Total Gem Count: " + this.GemsCollected.ToString());
+            this.UIScore.text = this.GemsCollected.ToString();
             Destroy(other.gameObject);
         }
 
@@ -86,7 +88,7 @@ public class PlayerController : MonoBehaviour
             this.Die();
         }
         
-        else if(other.gameObject.CompareTag("Saw") || other.gameObject.CompareTag("Acid") || other.gameObject.CompareTag("Spike"))
+        else if(other.gameObject.CompareTag("Saw") || other.gameObject.CompareTag("Acid"))
         {
             // Kills the player upon contact with the blade.
             this.Die();
@@ -117,6 +119,7 @@ public class PlayerController : MonoBehaviour
     {
         Rb.freezeRotation = true;
         this.transform.position = this.SpawnLocation.transform.position;
+        this.GemsCollected = 0;
     }
 
 
