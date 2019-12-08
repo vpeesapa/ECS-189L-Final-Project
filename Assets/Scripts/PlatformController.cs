@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlatformController : MonoBehaviour
 {
+    [SerializeField] private Vector3 InitialPosition;
     [SerializeField] private float MaxDistance = 25.0f;
     [SerializeField] private float MovementSpeed = 10.0f;
     [SerializeField] private bool MoveVertically = false;
@@ -13,7 +14,7 @@ public class PlatformController : MonoBehaviour
 
     void Start()
     {
-        
+        this.transform.position = this.InitialPosition;
     }
 
     void Update()
