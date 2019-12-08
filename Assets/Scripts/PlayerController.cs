@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float JumpStrength = 100.0f;
     [SerializeField] private float JumpTime;
     [SerializeField] private Text UIScore;
+    [SerializeField] private Text UILevelName;
+    [SerializeField] private TextMesh UINumGemsLeft;
+    [SerializeField] private int NumGemsLeft = 0;
 
     private float JumpTimeCounter;
     private bool IsJumping = false;
@@ -65,8 +68,10 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.CompareTag("Gem"))
         {
             this.GemsCollected++;
+            this.NumGemsLeft--;
             Debug.Log("Collected a Gem! Total Gem Count: " + this.GemsCollected.ToString());
             this.UIScore.text = this.GemsCollected.ToString();
+            this.UINumGemsLeft.text = this.NumGemsLeft.ToString();
             Destroy(other.gameObject);
         }
 
@@ -125,6 +130,7 @@ public class PlayerController : MonoBehaviour
         Rb.freezeRotation = true;
         this.transform.position = this.SpawnLocation.transform.position;
         this.GemsCollected = 0;
+        this.UINumGemsLeft.text = this.NumGemsLeft.ToString();
     }
 
 
@@ -214,6 +220,14 @@ public class PlayerController : MonoBehaviour
                 Destroy(this.Drop);
             }
 
+        }
+
+        if(UILevelName.color.a != 0.0f)
+        {
+            // The name of the level slowly fades out every frame.
+            var textColor = UILevelName.color;
+            textColor.a -= Time.deltaTime;
+            UILevelName.color = textColor;
         }
     }
 
