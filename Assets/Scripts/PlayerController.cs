@@ -112,10 +112,6 @@ public class PlayerController : MonoBehaviour
             this.IsGrounded = false;
         }
 
-        // else if(other.gameObject.CompareTag("Crate"))
-        // {
-        //     this.IsGrounded = false;
-        // }
 
         else if (other.gameObject.CompareTag("Platform"))
         {
@@ -174,8 +170,6 @@ public class PlayerController : MonoBehaviour
 
         float horizontalMovement = Input.GetAxisRaw("Horizontal");
         this.Rb.velocity = new Vector2(horizontalMovement * moveSpeed, this.Rb.velocity.y);
-        //float movementDelta = moveSpeed * horizontalMovement * Time.deltaTime;
-        //this.transform.position += new Vector3(movementDelta, 0.0f, 0.0f);
         updateMoveAnimation(horizontalMovement);
     }
 
@@ -187,7 +181,6 @@ public class PlayerController : MonoBehaviour
             this.IsJumping = true;
             this.JumpTimeCounter = this.JumpTime;
             this.Rb.velocity = Vector2.up * this.JumpStrength;
-            //this.Rb.AddForce(new Vector2(this.Rb.velocity.x, this.JumpStrength));
             this.Anim.SetBool("Run", false);
             gameObject.GetComponent<AudioSource>().Play();
         }
