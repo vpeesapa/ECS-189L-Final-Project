@@ -143,6 +143,16 @@ public class PlayerController : MonoBehaviour
 
     private void updateMoveAnimation(float horizontalMovement)
     {
+        if(!this.IsGrounded)
+        {
+            this.Anim.SetBool("MidAir", true);
+        }
+
+        else 
+        {
+            this.Anim.SetBool("MidAir", false);
+        }
+
         if (horizontalMovement < 0.0f)
         {
             this.transform.localScale = new Vector2(-1, 1);
