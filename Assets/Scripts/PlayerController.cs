@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     private bool IsGrounded = false;
     private GameObject Drop;
     private int GemsCollected = 0;
+    private bool OnConveyor = false;
+    private float ConveyorSpeed = 3.0f;
 
 
 
@@ -71,12 +73,17 @@ public class PlayerController : MonoBehaviour
             this.Rb.velocity = Vector2.zero;
         }
 
-        
-
         else if (other.gameObject.CompareTag("Platform"))
         {
             this.IsGrounded = true;
             this.gameObject.GetComponent<BoxCollider2D>().transform.SetParent(other.transform);
+        }
+
+        else if(other.gameObject.CompareTag("Conveyor"))
+        {
+            this.IsGrounded = true;
+            this.gameObject.GetComponent<BoxCollider2D>().transform.SetParent(other.transform);
+            this.OnConveyor = true;
         }
 
         else if (other.gameObject.CompareTag("Crate"))
@@ -110,10 +117,16 @@ public class PlayerController : MonoBehaviour
             this.IsGrounded = false;
         }
 
-
         else if (other.gameObject.CompareTag("Platform"))
         {
             this.IsGrounded = false;
+            this.gameObject.GetComponent<BoxCollider2D>().transform.SetParent(null);
+        }
+
+        else if(other.gameObject.CompareTag("Conveyor"))
+        {
+            this.IsGrounded = false;
+            this.OnConveyor = false;
             this.gameObject.GetComponent<BoxCollider2D>().transform.SetParent(null);
         }
     }
@@ -226,6 +239,13 @@ public class PlayerController : MonoBehaviour
                 panelColor.a -= Time.deltaTime;
                 UIPanelImage.color = panelColor;
             }
+        }
+
+        if(this.OnConveyor)
+        {
+            var playerPos = this.gameObject.transform.position;
+            playerPos.x -= ConveyorSpeed * Time.deltaTime;
+            this.gameObject.transform.position = playerPos;
         }
 
     }

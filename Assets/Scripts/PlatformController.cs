@@ -12,7 +12,7 @@ public class PlatformController : MonoBehaviour
     [SerializeField] private int InitialDirection = 1;
     private Vector3 InitialPosition;
 
-    void Start()
+    void Awake()
     {
         this.InitialPosition = this.transform.position;
     }
