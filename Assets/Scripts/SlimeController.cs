@@ -12,7 +12,6 @@ public class SlimeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.gameObject.GetComponent<Rigidbody2D>().freezeRotation = true;
         this.InitialPosition = this.transform.position;
     }
 
@@ -20,7 +19,20 @@ public class SlimeController : MonoBehaviour
     void Update()
     {        
         Vector3 position = this.InitialPosition;
-        position.x += (Mathf.Sin(Time.time * this.MovementSpeed) + 1) * this.InitialDirection * this.MaxDistance / 2;
+        float movementDelta = (Mathf.Sin(Time.time * this.MovementSpeed) + 1) * this.InitialDirection * this.MaxDistance / 2;
+        position.x += movementDelta;
         this.transform.position = position;
+
+        var spriteRenderer = this.GetComponent<SpriteRenderer>();
+
+        if(movementDelta > 0.0f)
+        {
+            spriteRenderer.flipX = false;
+        }	        
+
+        else
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 }
