@@ -229,15 +229,15 @@ public class PlayerController : MonoBehaviour
         if(UILevelName.color.a != 0.0f)
         {
             // The name of the level slowly fades out every frame.
-            var textColor = UILevelName.color;
+            var textColor = this.UILevelName.color;
             textColor.a -= Time.deltaTime;
-            UILevelName.color = textColor;
+            this.UILevelName.color = textColor;
             if(UIPanelImage.color.a != 0.0f)
             {
                 // The panel that serves as a name also fades out every frame.
-                var panelColor = UIPanelImage.color;
+                var panelColor = this.UIPanelImage.color;
                 panelColor.a -= Time.deltaTime;
-                UIPanelImage.color = panelColor;
+                this.UIPanelImage.color = panelColor;
             }
         }
 
