@@ -20,15 +20,16 @@ public class PlatformController : MonoBehaviour
     void Update()
     {
         Vector3 position = this.InitialPosition;
+        var offset = (Mathf.Sin(Time.time * this.MovementSpeed) + 1) * this.InitialDirection * this.MaxDistance / 2;
         if(MoveHorizontally && !MoveVertically)
         {
             // If the platform moves horizontally.
-            position.x += (Mathf.Sin(Time.time * this.MovementSpeed) + 1) * this.InitialDirection * this.MaxDistance / 2;
+            position.x += offset;
         }
         else if(MoveVertically && !MoveHorizontally)
         {
             // If the platform moves vertically.
-            position.y += (Mathf.Sin(Time.time * this.MovementSpeed) + 1) * this.InitialDirection * this.MaxDistance / 2;
+            position.y += offset;
         }
         this.transform.position = position;
     }
