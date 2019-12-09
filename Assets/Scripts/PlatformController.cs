@@ -4,34 +4,32 @@ using UnityEngine;
 
 public class PlatformController : MonoBehaviour
 {
-    [SerializeField] private Vector3 InitialPosition;
     [SerializeField] private float MaxDistance = 25.0f;
     [SerializeField] private float MovementSpeed = 10.0f;
     [SerializeField] private bool MoveVertically = false;
     [SerializeField] private bool MoveHorizontally = false;
     // 1 to start moving right/up first or -1 to start moving left/down first.
     [SerializeField] private int InitialDirection = 1;
+    private Vector3 InitialPosition;
 
     void Start()
     {
-        this.transform.position = this.InitialPosition;
+        this.InitialPosition = this.transform.position;
     }
 
     void Update()
     {
-        float deltaMovement = (Mathf.Sin(Time.time * this.MovementSpeed) * Time.deltaTime * this.MaxDistance) * this.InitialDirection;
-        Vector3 transformedPosition = this.transform.position;
+        Vector3 position = this.InitialPosition;
         if(MoveHorizontally && !MoveVertically)
         {
             // If the platform moves horizontally.
-            transformedPosition.x += deltaMovement;
-            this.transform.position = transformedPosition;
+            position.x += (Mathf.Sin(Time.time * this.MovementSpeed) + 1) * this.InitialDirection * this.MaxDistance / 2;
         }
         else if(MoveVertically && !MoveHorizontally)
         {
             // If the platform moves vertically.
-            transformedPosition.y += deltaMovement;
-            this.transform.position = transformedPosition;
+            position.y += (Mathf.Sin(Time.time * this.MovementSpeed) + 1) * this.InitialDirection * this.MaxDistance / 2;
         }
+        this.transform.position = position;
     }
 }
