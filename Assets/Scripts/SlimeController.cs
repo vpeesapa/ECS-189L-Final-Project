@@ -16,21 +16,13 @@ public class SlimeController : MonoBehaviour
 
     void Update()
     {        
+        Vector2 previousPosition = this.transform.position;
         Vector2 position = this.InitialPosition;
         float movementDelta = (Mathf.Sin(Time.time * this.MovementSpeed) + 1) * this.InitialDirection * this.MaxDistance / 2;
         position.x += movementDelta;
         this.transform.position = position;
 
         var spriteRenderer = this.GetComponent<SpriteRenderer>();
-
-        if(movementDelta > 0.0f)
-        {
-            spriteRenderer.flipX = false;
-        }	        
-
-        else
-        {
-            spriteRenderer.flipX = true;
-        }
+        spriteRenderer.flipX = (position.x - previousPosition.x < 0.0f);
     }
 }
