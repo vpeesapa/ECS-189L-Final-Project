@@ -20,14 +20,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TextMesh UINumGemsLeft;
     [SerializeField] private int NumGemsLeft = 0;
 
+    // for jump effect
+    [SerializeField] private float XSqueeze = 0.9f;
+    [SerializeField] private float YSqueeze = 1.1f;
+    [SerializeField] private float SqueezeSeconds = 0.1f;
+
+
     private float JumpTimeCounter;
     private bool IsJumping = false;
     private bool Collided;
-    private bool IsGrounded = false;
+    private bool IsGrounded = true;
     private GameObject Drop;
     private int GemsCollected = 0;
     private bool OnConveyor = false;
     private float ConveyorSpeed = 3.0f;
+    private Vector3 MovementDirection = Vector3.zero;
 
 
 
@@ -48,25 +55,17 @@ public class PlayerController : MonoBehaviour
         {
             this.Die();
         }
-        // if(other.gameObject.tag == "Foreground")
-        // {
-        //     this.IsGrounded = true;
-        // }
-
     }
 
     public void OnTriggerExit2D(Collider2D other)
     {
         this.Collided = false;
-
-        // if(other.gameObject.tag == "Foreground")
-        // {
-        //     this.IsGrounded = true;
-        // }
     }
 
     public void OnCollisionEnter2D(Collision2D other)
     {
+        //bool wasGrounded = this.IsGrounded;
+
         if (other.gameObject.CompareTag("Ground"))
         {
             this.IsGrounded = true;
@@ -108,6 +107,11 @@ public class PlayerController : MonoBehaviour
             // Kills the player upon contact with the blade.
             this.Die();
         }
+
+        // if(!wasGrounded && this.IsGrounded)
+        // {
+        //     StartCoroutine(Squeeze(this.YSqueeze, this.XSqueeze, this.SqueezeSeconds));
+        // }
     }
 
     public void OnCollisionExit2D(Collision2D other)
@@ -131,13 +135,38 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         Rb.freezeRotation = true;
         this.transform.position = this.SpawnLocation.transform.position;
         this.GemsCollected = 0;
-            this.UINumGemsLeft.text = this.NumGemsLeft.ToString();
+        this.UINumGemsLeft.text = this.NumGemsLeft.ToString();
+    }
+
+    private IEnumerator Squeeze(float xSqueeze, float ySqueeze, float seconds)
+    {
+        Vector3 initialSize = Vector3.one;
+        Vector3 newSize = new Vector3(xSqueeze, ySqueeze, initialSize.z);
+        float t = 0.0f;
+        
+        // from initial to squeeze
+        while(t <= 1.0f)
+        {
+            t += Time.deltaTime / seconds;
+            this.transform.localScale = Vector3.Lerp(initialSize, newSize, t);
+            this.transform.localScale = new Vector3(this.transform.localScale.x * this.MovementDirection.x, this.transform.localScale.y, this.transform.localScale.z); 
+            yield return null;
+        }
+
+        // from squeeze back to initial
+        t = 0.0f;
+        while(t <= 1.0f)
+        {
+            t += Time.deltaTime / seconds;
+            this.transform.localScale = Vector3.Lerp(newSize, initialSize, t);
+            this.transform.localScale = new Vector3(this.transform.localScale.x * this.MovementDirection.x, this.transform.localScale.y, this.transform.localScale.z); 
+            yield return null;
+        }
     }
 
 
@@ -192,6 +221,19 @@ public class PlayerController : MonoBehaviour
         float horizontalMovement = Input.GetAxisRaw("Horizontal");
         this.Rb.velocity = new Vector2(horizontalMovement * moveSpeed, this.Rb.velocity.y);
         updateMoveAnimation(horizontalMovement);
+
+
+        if(Mathf.Approximately(horizontalMovement, 0.0f));
+        
+        else if(horizontalMovement > 0)
+        {
+            this.MovementDirection = new Vector3(1.0f, 0.0f, 0.0f);
+        }
+
+        else
+        {
+            this.MovementDirection = new Vector3(-1.0f, 0.0f, 0.0f);
+        }
     }
 
     void Update()
@@ -204,6 +246,7 @@ public class PlayerController : MonoBehaviour
             this.Rb.velocity = Vector2.up * this.JumpStrength;
             this.Anim.SetBool("Run", false);
             gameObject.GetComponent<AudioSource>().Play();
+            StartCoroutine(Squeeze(this.XSqueeze, this.YSqueeze, this.SqueezeSeconds));
         }
 
         if (Input.GetKey(KeyCode.Space) && this.IsJumping)
@@ -226,14 +269,12 @@ public class PlayerController : MonoBehaviour
         }
 
 
-
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (this.Collided)
             {
                 Destroy(this.Drop);
             }
-
         }
 
         if(UILevelName.color.a != 0.0f)
@@ -257,7 +298,6 @@ public class PlayerController : MonoBehaviour
             playerPos.x -= ConveyorSpeed * Time.deltaTime;
             this.gameObject.transform.position = playerPos;
         }
-
     }
 
     // If something kills the player, the level is reloaded
