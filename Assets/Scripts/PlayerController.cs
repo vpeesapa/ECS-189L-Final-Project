@@ -318,6 +318,17 @@ public class PlayerController : MonoBehaviour
         if((Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl)) && Input.GetKeyDown(KeyCode.F2))
         {
             this.Invincible = !this.Invincible;
+
+            var canvas = GameObject.Find("Canvas");
+            var prefab = Resources.Load<GameObject>("Popup Message");
+            var popupMessage = Instantiate(prefab, canvas.transform);
+            Destroy(popupMessage, 1.0f);
+
+            var text = popupMessage.GetComponent<Text>();
+            if (this.Invincible)
+                text.text = "Invincibility Mode Enabled";
+            else
+                text.text = "Invincibility Mode Disabled";
         }
 
         if (UILevelName.color.a != 0.0f)
