@@ -301,9 +301,13 @@ public class PlayerController : MonoBehaviour
      
             if (this.IsPortal && this.NumGemsLeft <= 0)
             {
-                Debug.Log(1);
-                SceneManager.LoadScene(this.NextScene);
+                LoadNextLevel();
             }
+        }
+
+        if((Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl)) && Input.GetKeyDown(KeyCode.F1))
+        {
+            LoadNextLevel();
         }
 
         if (UILevelName.color.a != 0.0f)
@@ -335,5 +339,11 @@ public class PlayerController : MonoBehaviour
         this.Audio.PlayOneShot(this.DeathSound, 2.0f);
         this.gameObject.transform.position = this.SpawnLocation.transform.position;
         this.Rb.velocity = Vector2.zero;
+    }
+
+    public void LoadNextLevel()
+    {
+        Debug.Log(1);
+        SceneManager.LoadScene(this.NextScene);
     }
 }
