@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float JumpStrength = 100.0f;
     [SerializeField] private float JumpTime;
     [SerializeField] private Text UIScore;
+    [SerializeField] private Text UILivesRemaining;
     [SerializeField] private Text UILevelName;
     [SerializeField] private Image UIPanelImage;
     [SerializeField] private TextMesh UINumGemsLeft;
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 MovementDirection = Vector3.zero;
     private bool IsPortal = false;
     private int NumDeaths = 0;
+    private int LivesRemaining = 3;
     private AudioSource Audio;
     private bool Invincible = false;
 
@@ -162,6 +164,7 @@ public class PlayerController : MonoBehaviour
         this.transform.position = this.SpawnLocation.transform.position;
         this.GemsCollected = 0;
         this.UINumGemsLeft.text = this.NumGemsLeft.ToString();
+        this.UILivesRemaining.text = this.LivesRemaining.ToString();
     }
 
     private IEnumerator Squeeze(float xSqueeze, float ySqueeze, float seconds)
@@ -345,9 +348,11 @@ public class PlayerController : MonoBehaviour
     {
         this.Audio.PlayOneShot(this.DeathSound, 2.0f);
         this.NumDeaths += 1;
+        this.LivesRemaining -= 1;
+        this.UILivesRemaining.text = this.LivesRemaining.ToString();
         this.gameObject.transform.position = this.SpawnLocation.transform.position;
         this.Rb.velocity = Vector2.zero;
-        if(this.NumDeaths >= 3)
+        if(this.LivesRemaining <= 0)
         {
             this.UIGameOverPanel.gameObject.SetActive(true);
         }
