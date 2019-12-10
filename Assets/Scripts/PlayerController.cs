@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,7 +19,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Text UILevelName;
     [SerializeField] private Image UIPanelImage;
     [SerializeField] private TextMesh UINumGemsLeft;
-    [SerializeField] private int NumGemsLeft = 0;
+    [SerializeField] private int NumGemsLeft;
+    [SerializeField] private string NextScene;
 
     // for jump effect
     [SerializeField] private float XSqueeze = 0.9f;
@@ -35,7 +37,7 @@ public class PlayerController : MonoBehaviour
     private bool OnConveyor = false;
     private float ConveyorSpeed = 3.0f;
     private Vector3 MovementDirection = Vector3.zero;
-
+    private bool IsPortal = false;
 
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -49,6 +51,12 @@ public class PlayerController : MonoBehaviour
             this.UIScore.text = this.GemsCollected.ToString();
             this.UINumGemsLeft.text = this.NumGemsLeft.ToString();
             
+        }
+
+        else if (other.gameObject.CompareTag("Portal"))
+        {
+            this.IsPortal = true;
+
         }
 
         else if (other.gameObject.tag == "Spike")
@@ -77,6 +85,7 @@ public class PlayerController : MonoBehaviour
             this.IsGrounded = true;
             this.gameObject.GetComponent<BoxCollider2D>().transform.SetParent(other.transform);
         }
+      
 
         else if(other.gameObject.CompareTag("Conveyor"))
         {
@@ -132,6 +141,11 @@ public class PlayerController : MonoBehaviour
             this.IsGrounded = false;
             this.OnConveyor = false;
             this.gameObject.GetComponent<BoxCollider2D>().transform.SetParent(null);
+        }
+        else if (other.gameObject.CompareTag("Portal"))
+        {
+            this.IsPortal = false;
+
         }
     }
 
@@ -277,7 +291,17 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(UILevelName.color.a != 0.0f)
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+     
+            if (this.IsPortal && this.NumGemsLeft <= 0)
+            {
+                Debug.Log(1);
+                SceneManager.LoadScene(this.NextScene);
+            }
+        }
+
+        if (UILevelName.color.a != 0.0f)
         {
             // The name of the level slowly fades out every frame.
             var textColor = this.UILevelName.color;
