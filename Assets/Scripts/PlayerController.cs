@@ -113,6 +113,10 @@ public class PlayerController : MonoBehaviour
             this.Die();
         }
 
+        else if (other.gameObject.CompareTag("Spike") && !this.Invincible)
+        {
+            this.Die();
+        }
         else if (other.gameObject.CompareTag("Enemy") && !this.Invincible)
         {
             other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
