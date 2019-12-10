@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TextMesh UINumGemsLeft;
     [SerializeField] private int NumGemsLeft;
     [SerializeField] private string NextScene;
+    [SerializeField] private AudioClip DeathSound;
+    [SerializeField] private AudioClip GemCollectSound;
 
     // for jump effect
     [SerializeField] private float XSqueeze = 0.9f;
@@ -38,12 +40,14 @@ public class PlayerController : MonoBehaviour
     private float ConveyorSpeed = 3.0f;
     private Vector3 MovementDirection = Vector3.zero;
     private bool IsPortal = false;
+    private AudioSource Audio;
 
 
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Gem"))
         {
+            this.Audio.PlayOneShot(this.GemCollectSound, 1.0f);
             this.GemsCollected++;
             this.NumGemsLeft--;
             Debug.Log("Collected a Gem! Total Gem Count: " + this.GemsCollected.ToString());
@@ -151,6 +155,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        this.Audio = this.GetComponent<AudioSource>();
         Rb.freezeRotation = true;
         this.transform.position = this.SpawnLocation.transform.position;
         this.GemsCollected = 0;
@@ -327,6 +332,7 @@ public class PlayerController : MonoBehaviour
     // If something kills the player, the level is reloaded
     public void Die()
     {
+        this.Audio.PlayOneShot(this.DeathSound, 2.0f);
         this.gameObject.transform.position = this.SpawnLocation.transform.position;
         this.Rb.velocity = Vector2.zero;
     }

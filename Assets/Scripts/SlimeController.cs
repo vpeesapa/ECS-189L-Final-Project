@@ -9,16 +9,14 @@ public class SlimeController : MonoBehaviour
     [SerializeField] private int InitialDirection = 1;
     private Vector2 InitialPosition;
 
-    // Start is called before the first frame update
     void Start()
     {
-        this.InitialPosition = this.transform.position;
+        this.InitialPosition = new Vector2(this.transform.position.x, this.transform.position.y);
     }
 
-    // Update is called once per frame
     void Update()
     {        
-        Vector3 position = this.InitialPosition;
+        Vector2 position = this.InitialPosition;
         float movementDelta = (Mathf.Sin(Time.time * this.MovementSpeed) + 1) * this.InitialDirection * this.MaxDistance / 2;
         position.x += movementDelta;
         this.transform.position = position;
