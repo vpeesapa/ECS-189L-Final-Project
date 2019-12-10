@@ -7,8 +7,10 @@ public class ExitOnClick : MonoBehaviour
 {
     public void ExitGame()
     {
-        // To quit applications use - Application.Quit();.
-        // To quit from the editor use the following.
+        #if UNITY_EDITOR
         EditorApplication.isPlaying = false;
+        #else
+        Application.Quit();
+        #endif
     }
 }
