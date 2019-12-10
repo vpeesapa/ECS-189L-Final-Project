@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     private bool IsPortal = false;
     private int NumDeaths = 0;
     private AudioSource Audio;
+    private bool Invincible = false;
 
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -61,6 +62,11 @@ public class PlayerController : MonoBehaviour
         {
             this.IsPortal = true;
 
+        }
+        else if (other.gameObject.CompareTag("Enemy") && !this.Invincible)
+        {
+            other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            this.Die();
         }
 
     }
@@ -100,18 +106,18 @@ public class PlayerController : MonoBehaviour
             this.Rb.velocity = Vector2.zero;
         }
 
-        else if (other.gameObject.CompareTag("Spikes"))
+        else if (other.gameObject.CompareTag("Spikes") && !this.Invincible)
         {
             this.Die();
         }
 
-        else if (other.gameObject.CompareTag("Enemy"))
+        else if (other.gameObject.CompareTag("Enemy") && !this.Invincible)
         {
             other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             this.Die();
         }
 
-        else if (other.gameObject.CompareTag("Saw") || other.gameObject.CompareTag("Acid"))
+        else if ((other.gameObject.CompareTag("Saw") || other.gameObject.CompareTag("Acid")) && !this.Invincible)
         {
             // Kills the player upon contact with the blade.
             this.Die();
@@ -304,6 +310,11 @@ public class PlayerController : MonoBehaviour
         if((Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl)) && Input.GetKeyDown(KeyCode.F1))
         {
             LoadNextLevel();
+        }
+
+        if((Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl)) && Input.GetKeyDown(KeyCode.F2))
+        {
+            this.Invincible = !this.Invincible;
         }
 
         if (UILevelName.color.a != 0.0f)
