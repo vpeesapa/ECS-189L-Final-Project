@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
     private int GemsCollected = 0;
     private bool OnConveyor = false;
     private float ConveyorSpeed = 3.0f;
-    private Vector3 MovementDirection = Vector3.zero;
+    private Vector3 MovementDirection = new Vector3(1.0f, 0.0f, 0.0f);
     private bool IsPortal = false;
     private int NumDeaths = 0;
     private int LivesRemaining = 3;
@@ -113,6 +113,10 @@ public class PlayerController : MonoBehaviour
             this.Die();
         }
 
+        else if (other.gameObject.CompareTag("Spike") && !this.Invincible)
+        {
+            this.Die();
+        }
         else if (other.gameObject.CompareTag("Enemy") && !this.Invincible)
         {
             other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
