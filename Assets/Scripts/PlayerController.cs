@@ -1,6 +1,4 @@
-﻿
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Image UIPanelImage;
     [SerializeField] private TextMesh UINumGemsLeft;
     [SerializeField] private int NumGemsLeft;
+    [SerializeField] private Image UIGameOverPanel;
     [SerializeField] private string NextScene;
     [SerializeField] private AudioClip DeathSound;
     [SerializeField] private AudioClip GemCollectSound;
@@ -40,6 +39,7 @@ public class PlayerController : MonoBehaviour
     private float ConveyorSpeed = 3.0f;
     private Vector3 MovementDirection = Vector3.zero;
     private bool IsPortal = false;
+    private int NumDeaths = 0;
     private AudioSource Audio;
 
 
@@ -63,10 +63,6 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        else if (other.gameObject.tag == "Spike")
-        {
-            this.Die();
-        }
     }
 
     public void OnTriggerExit2D(Collider2D other)
@@ -337,8 +333,13 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         this.Audio.PlayOneShot(this.DeathSound, 2.0f);
+        this.NumDeaths += 1;
         this.gameObject.transform.position = this.SpawnLocation.transform.position;
         this.Rb.velocity = Vector2.zero;
+        if(this.NumDeaths >= 3)
+        {
+            this.UIGameOverPanel.gameObject.SetActive(true);
+        }
     }
 
     public void LoadNextLevel()
