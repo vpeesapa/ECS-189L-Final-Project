@@ -20,6 +20,12 @@ public class PanelFadeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Space skips past intro
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            this.TimeSinceStarted = FadeDelay;
+        }
+
         var panelColor = this.UIPanelImage.color;
         var textColor = this.UIText.color;
         if(this.TimeSinceStarted >= FadeDelay)
