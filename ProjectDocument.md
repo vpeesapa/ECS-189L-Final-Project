@@ -116,6 +116,9 @@ There were also other scripts that also controlled the movements for several obs
 
 *Gustav Holst's music* - [Venus](https://en.wikipedia.org/wiki/File:Holst-_venus.ogg), used in the Davis level, and [Mercury](https://en.wikipedia.org/wiki/File:Holst_The_Planets_Mercury.ogg), used by the trailer, are public domain performed by the U.S. Air Force Band, downloaded from Wikipedia.
 
+Koble's animation is controlled by the Unity editors Animator component. Kobe goes through three animation states throughout the game: idle, run, and mid air. The sprites for the different animation states were all provided by [Jessica Munguia](https://jesse-m.itch.io/jungle-pack).
+
+
 
 ## Input
 
