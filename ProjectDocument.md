@@ -26,7 +26,11 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 ## User Interface
 
-**Describe your user interface and how it relates to gameplay. This can be done via the template.**
+As a platformer game, we wanted to make our UI simple and as least distracting as possible. 
+
+*Main Menu* - Our initial main menu consists of three buttons: Play, Help, and Exit. When the user presses play, the first level is loaded.
+
+*In-game UI* - The in-game UI consists of two counters, one for the number of lives the player has remaining and the number of gems the player has collected in the current level. There is a sprite next to each counter to represent what each counter indicates. 
 
 ## Movement/Physics
 
@@ -34,13 +38,18 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 ## Animation and Visuals
 
-**List your assets including their sources and licenses.**
 
-**Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
+*Character Sprite* - The player character sprite was made by [Jessica Munguia](https://jesse-m.itch.io/jungle-pack)
+*Jungle* - The tiles used in the jungle map and the spikes falling down were made by [Jessica Munguia](https://jesse-m.itch.io/jungle-pack).
 
 ## Input
 
-**Describe the default input configuration.**
+*2D Movement* - Use left and right arrow keys or alterantively A and D keys to move left and right.
+*Jump* - The space key is used to jump. Holding the space key longer will result in the player jumping higher.
+*Running* - Holding the Z key while moving will make the character move faster. Holding Z while jumping will make the character jump further.
+*Interacting with Portals* - Pressing the R key near a portal will allow the player to traverse through levels if they have collected the required number of gems.
+*Invinciblity* - Pressing the Control and F1 keys at the same time will enable a cheat mode to make the player become invulnerable to enemies and other obstacles.
+*Skip level* - Pressing the Control and F2 keys at the same time will allow the user to skip the current level.
 
 **Add an entry for each platform or input style your project supports.**
 
