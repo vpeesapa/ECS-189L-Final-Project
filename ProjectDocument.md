@@ -88,7 +88,7 @@ The players movement is done on the 2D plane where the player is able to move le
 
 ## Game Logic
 
-**Document what game states and game data you managed and what design patterns you used to complete your task.**
+The game is divided in Unity into one scene per level. Most of the core logic is in the `PlayerController` script attached to the `Player` object in each scene, which is configured with a variety of `[SerializeField]`s. This maintains the state needed within the level, and interfaces with UI and input. Some UI related objects are copied between scenes; a better overall architecture would probably make much heavier use of prefabs.
 
 # Sub-Roles
 
