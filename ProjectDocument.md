@@ -13,6 +13,8 @@
 
 Untitled Platform Game is a platform adventure game consisting of four different levels with their own theme and distinct obstacles the player has to go through. You play as Koble, an explorer from Mirai City, who's on a quest to collect the *Power Gems* that unlock portals connecting the different worlds of the disconnected continent of Isolasia.
 
+***Fun Fact: 'Koble' is Norwegian for 'connect.'***
+
 ## Gameplay explanation ##
 
 Avoid obstacles and collect enough gems required to open up the portal connecting to the next world. Used the arrow keys or A and D keys to move left and right. The player can jump by pressing the space bar and the jump height will increase if the space bar is held down longer. The Z key can be pressed to run faster. In order to clear levels, the player may also be required to use a combination of keys (such as holding Z and space to make a long jump).
