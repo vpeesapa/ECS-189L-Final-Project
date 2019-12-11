@@ -35,9 +35,9 @@ As a platformer game, we wanted to make our UI simple and as least distracting a
 ## Movement/Physics
 
 **Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your movement scripts that do not use the physics system?**
+The players movement is done on the 2D plane where the player is able to move left and right on the horizontal axes and jump on the verticles axes. The player moves left and right at a fixed speed which can be increased if the Z key is pressed.
 
 ## Animation and Visuals
-
 
 *Character Sprite* - The player character sprite was made by [Jessica Munguia](https://jesse-m.itch.io/jungle-pack).
 
