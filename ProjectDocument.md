@@ -25,7 +25,7 @@ The game is divided into four levels, each written and designed by one of the te
 
 ### Mirai City ###
 
-The first level of the game was designed to introduce the player to the general mechanics of the game. The various obstacles that are found along the way (blades, conveyer belts, and acid pools) are reminiscent of a city that is well-developed but at the same time, home to a lot of toxicity, both literally and figuratively. The name of the city is based on the Japanese word for 'future,' further illustrating the more 'futuristic' part of Isolasia.
+The first level of the game was designed to introduce the player to the general mechanics of the game. The various obstacles that are found along the way (blades, conveyor belts, and acid pools) are reminiscent of a city that is well-developed but at the same time, home to a lot of toxicity, both literally and figuratively. The name of the city is based on the Japanese word for 'future,' further illustrating the more 'futuristic' part of Isolasia.
 
 ### Hidden Forest ###
 
@@ -54,7 +54,7 @@ As a platformer game, we wanted to make our UI simple and as least distracting a
 
 *Pause Menu* - There is a pause menu that's been implemented in every level, which allows the player to pause the game and take a breather. The UI for the pause menu is only displayed upon clicking the pause button from the HUD. The pause menu contains three buttons: a 'resume' button that allows the player to continue playing from where they left off, a 'restart' button that lets them restart the level from the beginning, and an 'exit' button that lets them go back to the main menu. Most of the logic for this menu is similar to the logic for the main menu and also utilizes the [LoadSceneOnClick](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/master/Assets/Scripts/LoadSceneOnClick.cs) script.
 
-*Game Over Screen* - There's also a game over screen that's been implemented in every level. It is initially hidden from the player and is only displayed when the player had lost all of their lives for that level. The menu comprises of a 'Game Over' message and two buttons: a 'restart' button that allows the player to restart the level from scratch and an 'exit' button that lets them return to the main menu. Once again, the underlying logic utilizes the [LoadSceneOnClick](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/master/Assets/Scripts/LoadSceneOnClick.cs) script.
+*Game Over Screen* - There's also a game over screen that's been implemented in every level. It is initially hidden from the player and is only displayed when the player had lost all of their lives for that level. The menu comprises of a 'Game Over' message and two buttons: a 'restart' button that allows the player to restart the level from scratch and an 'exit' button that lets them return to the main menu. Once again, the underlying logic utilizes the [LoadSceneOnClick](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/master/Assets/Scripts/LoadSceneOnClick.cs) script. The logic that keeps track of player deaths can be found in the [PlayerController](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/f60a90ae1c6b0bc752050a04d5dbfab815ea6a07/Assets/Scripts/PlayerController.cs#L366) script.
 
 *Thank You Screen* - There's a 'thank you screen,' which is displayed after the player clears the Davis level. It contains a message thanking the player for playing and beating the game as well a button that lets them return to the main menu. The button once again utilizes the [LoadSceneOnClick](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/master/Assets/Scripts/LoadSceneOnClick.cs) script.
 
@@ -68,7 +68,31 @@ Since the game is a 2D platformer, we wanted the controls for the character to b
   
 *Sprint* -  The controls for the platform take heavy inspiration from the game Super Mario Bros. so we have a normal running speed when you move the character with the arrow keys and a much faster running speed when the 'Z' key is held down while moving the arrow keys. The [moving speed of the character is modified](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/74b7c59440e6e6b1f6f5a13922ce3baceec1f69a/Assets/Scripts/PlayerController.cs#L248-L251) appropriately when the 'Z' key is held down.
   
-*The Jump* -  We wanted the jump to feel a bit dynamic so we made it so that the character [jumps to a certain height based on how long the space bar is held down](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/74b7c59440e6e6b1f6f5a13922ce3baceec1f69a/Assets/Scripts/PlayerController.cs#L273-L301) by using timers. Upon pressing the space bar, a positive upward force is added to the player until the user lets go or the jump timer runs out. At this point, the gravity of Unity's Physics Engine takes over and pulls the player downward. 
+*The Jump* -  We wanted the jump to feel a bit dynamic so we made it so that the character [jumps to a certain height based on how long the space bar is held down](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/74b7c59440e6e6b1f6f5a13922ce3baceec1f69a/Assets/Scripts/PlayerController.cs#L273-L301) by using timers. Upon pressing the space bar, a positive upward force is added to the player until the user lets go or the jump timer runs out. At this point, the gravity of Unity's Physics Engine takes over and pulls the player downward.
+
+There were also other scripts that also controlled the movements for several obstacles that were present in the game.
+
+### Scripts that were used to control game obstacles/game objects
+
+[BladeController](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/master/Assets/Scripts/BladeController.cs) - Controlled the linear and rotational motions of the blade found in Mirai City.
+
+[CameraController](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/master/Assets/Scripts/CameraController.cs) - Controlled the camera so that it moves along with the player.
+
+[CrateController](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/master/Assets/Scripts/CrateController.cs) - Didn't control the motion of the crate found in Bayside Village, but respawns it if the crate doesn't land on any platform.
+
+[EagleController](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/master/Assets/Scripts/CrateController.cs) - Controlled the movements of the eagle found in Bayside Village.
+
+[PlatformController](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/master/Assets/Scripts/PlatformController.cs) - Controlled the motion of movable platforms that are found in all levels. Could be used to either move those platforms either horizontally or vertically.
+
+[PlayerController](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/0831705b91455d1c2b220b9fb5c280fc31689297/Assets/Scripts/PlayerController.cs#L349) - Has the implementation for controlling the player's motion when they're standing on the conveyor belt in Mirai City.
+
+[Shooter](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/master/Assets/Scripts/Shooter.cs) - Controlled the delay with which the squirrels found in Davis would be launched from the tree.
+
+[SlimeController](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/master/Assets/Scripts/SlimeController.cs) - Controls the movements of the slimes found in Bayside Village.
+
+[SpikeController](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/master/Assets/Scripts/SpikeController.cs) - Controls the movements and positions of the continuously falling spikes found in Hidden Forest.
+
+[SquirrelController](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/master/Assets/Scripts/SquirrelController.cs) - Constantly updates the sprites of the squirrels if they're in motion.
 
 ## Animation and Visuals
 
@@ -147,7 +171,7 @@ We chose to use an 8-bit style soundtrack for our levels similar to our visual s
 
 ### Summary of key findings
 
-The general consensus of our gameplay testers was that the gameplay was a bit on the challenging side. While this didn't hinder them from enjoying the game, there were a few that questioned if the higher difficulty curve would stop more casual gamers from playing the game. At the same time, there were a few that mentioned that hit-boxes (or collision boxes) were being activated even if the player was not touching any hazards. Aside from that, a majority of them were happy with the visuals, including the UI elements, and the level progression of the game.
+The general consensus of our gameplay testers was that the gameplay was a bit on the challenging side. While this didn't hinder them from enjoying the game, there were a few that questioned if the higher difficulty curve would stop more casual gamers from playing the game. At the same time, there were a few that mentioned that hit-boxes (or collision boxes) were being activated even if the player was not touching any hazards. Most people were also suggesting if we could include some power-ups such as extra lives that can help the player. Aside from that, a majority of them were happy with the visuals, including the UI elements, and the level progression of the game.
 
 ## Narrative Design
 
