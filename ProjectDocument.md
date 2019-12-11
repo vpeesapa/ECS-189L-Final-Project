@@ -58,7 +58,9 @@ The players movement is done on the 2D plane where the player is able to move le
 
 *Conveyor Belt* - The conveyor belt used in the City level was from OpenGameArt by [Chromaeleon](https://opengameart.org/content/conveyor-belts-spritesheet-anims).
 
+*Davis Level* - The two backgrounds, squirrel, water tower, and needle are all photos taken by Ian.
 
+*Gustav Holst's music* - [Venus](https://en.wikipedia.org/wiki/File:Holst-_venus.ogg), used in the Davis level, and [Mercury](https://en.wikipedia.org/wiki/File:Holst_The_Planets_Mercury.ogg), used by the trailer, are public domain performed by the U.S. Air Force Band, downloaded from Wikipedia.
 
 
 ## Input
