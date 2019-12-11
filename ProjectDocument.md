@@ -107,7 +107,7 @@ As the game may be slighlty challenging, we added cheat commands to test the gam
 
 *Skip level* - Pressing the Control and F1 keys at the same time will allow the user to skip the current level. [Script](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/e9e920f251e2e24b06d651c82eec04ee1721fe61/Assets/Scripts/PlayerController.cs#L313)
 
-*Invinciblity* - Pressing the Control and F2 keys at the same time will enable a cheat mode to make the player become invulnerable to enemies and other obstacles.[Script](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/e9e920f251e2e24b06d651c82eec04ee1721fe61/Assets/Scripts/PlayerController.cs#L318)
+*Invinciblity* - Pressing the Control and F2 keys at the same time will enable a cheat mode to make the player become invulnerable to enemies and other obstacles. [Script](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/e9e920f251e2e24b06d651c82eec04ee1721fe61/Assets/Scripts/PlayerController.cs#L318)
 
 ## Game Logic
 
