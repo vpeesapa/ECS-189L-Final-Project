@@ -130,7 +130,7 @@ Our game supports keyboard and mouse inputs. Mouse is used to navigate the UI an
 
 *Running* - Holding the Z key while moving will make the character move faster. Holding Z while jumping will make the character jump further. [Script](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/e9e920f251e2e24b06d651c82eec04ee1721fe61/Assets/Scripts/PlayerController.cs#L248)
 
-As the game may be slighlty challenging, we added cheat commands to test the game and try out different parts of the game.
+As the game may be slightly challenging, we added cheat commands to test the game and try out different parts of the game.
 
 *Skip level* - Pressing the Control and F1 keys at the same time will allow the user to skip the current level. [Script](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/e9e920f251e2e24b06d651c82eec04ee1721fe61/Assets/Scripts/PlayerController.cs#L313)
 
