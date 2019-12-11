@@ -1,19 +1,31 @@
+# Untitled Platformer Game #
+
+# Team Members #
+
+1. Sahil Faruque
+2. Justin Lim
+3. Varun Peesapati
+4. Ian Scott
 
 # Game Basic Information #
 
 ## Summary ##
 
-Untitled Platform Game is a platformer consisting of four different levels with their own theme and distinct obstacles the player has to go through. You play as Coble from Mirai City on a quest to collect gems to connect the different worlds in Isolasia.
+Untitled Platform Game is a platform adventure game consisting of four different levels with their own theme and distinct obstacles the player has to go through. You play as Koble, an explorer from Mirai City, who's on a quest to collect the *Power Gems* that unlock portals connecting the different worlds of the disconnected continent of Isolasia.
 
 ## Gameplay explanation ##
 
-Avoid obstacles and collect enough gems required to open up the portal connecting to the next word. Used the arrow keys or A and D keys to move left and right. The player can jump by pressing the space bar and the jump height will increase if the space bar is held down longer. The Z key can be pressed to run faster. 
+Avoid obstacles and collect enough gems required to open up the portal connecting to the next world. Used the arrow keys or A and D keys to move left and right. The player can jump by pressing the space bar and the jump height will increase if the space bar is held down longer. The Z key can be pressed to run faster. In order to clear levels, the player may also be required to use a combination of keys (such as holding Z and space to make a long jump).
 
-## Levels
+## Levels ##
 
-The game is divided into four levels, each written by one of the team members. Level design was a significant component of the development process. They are roughly ordered by increasing difficulty.
+The game is divided into four levels, each written and designed by one of the team members. Level design was a significant component of the development process. They are roughly ordered by increasing difficulty.
 
-### Davis
+### Mirai City ###
+
+The first level of the game was designed to introduce the player to the general mechanics of the game. The various obstacles that are found along the way (blades, conveyer belts, and acid pools) are reminiscent of a city that is well-developed but at the same time, home to a lot of toxicity, both literally and figuratively. The name of the city is based on the Japanese word for 'future,' further illustrating the more futuristic' part of Isolasia.
+
+### Davis ###
 
 The last level is stylistically based on UC Davis using photography from Davis. The squirrels flying from trees to attack are representative of the typical Davis experience. The music would be one of the pastoral pieces by Vaughn Williams, but his works are in copyright. The level design is intended to contain unexpected elements, but without overtly deceptive design.
 
@@ -119,9 +131,13 @@ We chose to use an 8-bit style soundtrack for our levels similar to our visual s
 
 ## Gameplay Testing
 
-**Add a link to the full results of your gameplay tests.**
+**Please use your UC Davis e-mail address to access the following link.**
 
-**Summarize the key findings from your gameplay tests.**
+[Link to results of gameplay tests](https://docs.google.com/spreadsheets/d/1W2F9wkQy_VTyHWFTHw35HolKg1pSE9ViAUyBER8Ghak/edit?usp=sharing)
+
+### Summary of key findings
+
+A general consensus of our gameplay testers was that the gameplay was a bit on the challenging side. While this didn't hinder them from enjoying the game, there were a few that questioned if the higher difficulty curve would stop more casual gamers from playing the game. At the same time, there were a few that mentioned that hit-boxes (or collision boxes) were being activated even if the player was not touching any hazards. Aside from that, a majority of them were happy with the visuals, including the UI elements, and the level progression of the game.
 
 ## Narrative Design
 
@@ -135,7 +151,7 @@ We chose to use an 8-bit style soundtrack for our levels similar to our visual s
 
 The trailer includes a couple clips from each of the levels, and tries to demonstrate the basic game dynamics, as well as some of the interesting design elements in particular levels.
 
-The press kit includes screenshots of all the levels that are present in the game along with giving a general description of the game. Some other press kits that we took inpiration from are [Press Kit 1](https://github.com/isaboi/ECS189L_GameProject/blob/master/TheStruggle_PressKit.pdf) and [Press Kit 2](https://github.com/kyle-andrus/RIP/blob/master/PressKit/presskitty.md).
+The press kit includes screenshots of all the levels that are present as well as giving a general description of the game. Some other press kits that we took inspiration from are [Press Kit 1](https://github.com/isaboi/ECS189L_GameProject/blob/master/TheStruggle_PressKit.pdf) and [Press Kit 2](https://github.com/kyle-andrus/RIP/blob/master/PressKit/presskitty.md).
 
 
 ## Game Feel
