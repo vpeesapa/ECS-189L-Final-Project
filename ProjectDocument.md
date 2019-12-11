@@ -11,7 +11,7 @@
 
 ## Summary ##
 
-Untitled Platform Game is a platform adventure game consisting of four different levels with their own theme and distinct obstacles the player has to go through. You play as Koble, an explorer from Mirai City, who's on a quest to collect the *Power Gems* that unlock portals connecting the different worlds of the disconnected continent of Isolasia.
+Untitled Platformer Game is a platform adventure game consisting of four different levels with their own theme and distinct obstacles the player has to go through. You play as Koble, an explorer from Mirai City, who's on a quest to collect the *Power Gems* that unlock portals connecting the different worlds of the disconnected continent of Isolasia.
 
 ***Fun Fact: 'Koble' is Norwegian for 'connect.'***
 
