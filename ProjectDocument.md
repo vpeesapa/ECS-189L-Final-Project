@@ -57,6 +57,15 @@ The players movement is done on the 2D plane where the player is able to move le
 
 *Jungle* - The tiles used in the jungle map and the falling spikes were made by [Jessica Munguia](https://jesse-m.itch.io/jungle-pack).
 
+*Village Level* - The moving platforms and the tiles were made by ANSIMUZ from the [Unity Asset Store](https://assetstore.unity.com/packages/2d/characters/sunny-land-103349).
+
+*Village Background Props* - The trees and the other background props used in the Village level were made by ANSIMUZ from the [Unity Asset Store](https://assetstore.unity.com/packages/2d/characters/tiny-rpg-forest-114685).
+
+*Slime Enemies* - The slimes in the Village level were made using a slime sprite made by NYKNCK from the [Unity Asset Store](https://assetstore.unity.com/packages/2d/characters/slime-character-157405).
+
+
+
+
 ## Input
 
 *2D Movement* - Use left and right arrow keys or alterantively A and D keys to move left and right.
@@ -83,7 +92,9 @@ The players movement is done on the 2D plane where the player is able to move le
 
 **List your assets including their sources and licenses.**
 
-*Background Sound* - The background sound in the jungle level is from [Ludum Dare](http://ludumdare.com/compo/ludum-dare-32/).
+*Jungle* - The background sound in the Jungle level is from [Ludum Dare](http://ludumdare.com/compo/ludum-dare-32/).
+
+*Village* - The background sound in the Village level is from the Unity Asset Store by [Zero Rare](https://assetstore.unity.com/packages/audio/sound-fx/sound-fx-retro-pack-121743).
 
 *Jump* - The jump sound effect is from a free sound effect pack from the Unity Asset Store by [Zero Rare](https://assetstore.unity.com/packages/audio/sound-fx/sound-fx-retro-pack-121743).
 
