@@ -105,9 +105,9 @@ Our game supports keyboard and mouse inputs. Mouse is used to navigate the UI an
 
 *Interacting with Portals* - Pressing the R key near a portal will allow the player to traverse through levels if they have collected the required number of gems.
 
-*Invinciblity* - Pressing the Control and F1 keys at the same time will enable a cheat mode to make the player become invulnerable to enemies and other obstacles.
+*Skip level* - Pressing the Control and F1 keys at the same time will allow the user to skip the current level.
 
-*Skip level* - Pressing the Control and F2 keys at the same time will allow the user to skip the current level.
+*Invinciblity* - Pressing the Control and F2 keys at the same time will enable a cheat mode to make the player become invulnerable to enemies and other obstacles.
 
 **Add an entry for each platform or input style your project supports.**
 
