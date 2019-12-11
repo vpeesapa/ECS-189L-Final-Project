@@ -130,4 +130,10 @@ The press kit includes screenshots of all the levels that are present in the gam
 
 ## Game Feel
 
-**Document what you added to and how you tweaked your game to improve its game feel.**
+*Jump* - The player is able to jump higher if they hold the space bar. The player is also able to jump further if they hold the run key Z. We used Unity physics to make our jump feel smoother and realistic by making the player fall faster due to gravity.
+
+*Narrative* - We wanted to make our game as immersive as possible by displaying the narrative of the game as soon as the game starts.
+
+*Hitbox* - The hotbox of obstacles were adjusted so that the player doesn't die when the player visually does not collide with obstacles.
+
+*Pause Menu* - We added a pause menu to allow the user to pause the game whenever they want.
