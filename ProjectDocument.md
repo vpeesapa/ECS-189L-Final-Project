@@ -68,9 +68,13 @@ The players movement is done on the 2D plane where the player is able to move le
 ## Audio
 
 **List your assets including their sources and licenses.**
+
 The background sound in the jungle level is from (Ludum Dare)[http://ludumdare.com/compo/ludum-dare-32/].
 
+*Jump* - The jump sound effect is from a free sound effect from the Unity Asset Store by (Zero Rare)[https://assetstore.unity.com/packages/audio/sound-fx/sound-fx-retro-pack-121743].
+
 **Describe the implementation of your audio system.**
+
 An audio source component is attached to the Player object at each level to play the corresponding background sound and the jump sound when the player jumps. In the main menu, an audio source component is attached to the Canvas to play the main menu sound.
 **Document the sound style.** 
 
