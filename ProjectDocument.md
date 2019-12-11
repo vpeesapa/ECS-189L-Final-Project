@@ -97,17 +97,17 @@ Since the game is a 2D platformer, we wanted the controls for the character to b
 
 Our game supports keyboard and mouse inputs. Mouse is used to navigate the UI and the menus while the keyboard is used to move the player. The [PlayerController Script](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/74b7c59440e6e6b1f6f5a13922ce3baceec1f69a/Assets/Scripts/PlayerController.cs#L273) controls the player's movement.
 
-*2D Movement* - Use left and right arrow keys or alterantively A and D keys to move left and right.
+*2D Movement* - Use left and right arrow keys or alterantively A and D keys to move left and right. [Script](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/e9e920f251e2e24b06d651c82eec04ee1721fe61/Assets/Scripts/PlayerController.cs#L253)
 
-*Jump* - The space key is used to jump. Holding the space key longer will result in the player jumping higher.
+*Jump* - The space key is used to jump. Holding the space key longer will result in the player jumping higher. [Script](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/e9e920f251e2e24b06d651c82eec04ee1721fe61/Assets/Scripts/PlayerController.cs#L273)
 
-*Running* - Holding the Z key while moving will make the character move faster. Holding Z while jumping will make the character jump further.
+*Running* - Holding the Z key while moving will make the character move faster. Holding Z while jumping will make the character jump further. [Script](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/e9e920f251e2e24b06d651c82eec04ee1721fe61/Assets/Scripts/PlayerController.cs#L248)
 
-*Interacting with Portals* - Pressing the R key near a portal will allow the player to traverse through levels if they have collected the required number of gems.
+As the game may be slighlty challenging, we added cheat commands to test the game and try out different parts of the game.
 
-*Skip level* - Pressing the Control and F1 keys at the same time will allow the user to skip the current level.
+*Skip level* - Pressing the Control and F1 keys at the same time will allow the user to skip the current level. [Script](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/e9e920f251e2e24b06d651c82eec04ee1721fe61/Assets/Scripts/PlayerController.cs#L313)
 
-*Invinciblity* - Pressing the Control and F2 keys at the same time will enable a cheat mode to make the player become invulnerable to enemies and other obstacles.
+*Invinciblity* - Pressing the Control and F2 keys at the same time will enable a cheat mode to make the player become invulnerable to enemies and other obstacles.[Script](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/e9e920f251e2e24b06d651c82eec04ee1721fe61/Assets/Scripts/PlayerController.cs#L318)
 
 ## Game Logic
 
