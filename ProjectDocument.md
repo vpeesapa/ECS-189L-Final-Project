@@ -113,6 +113,8 @@ An audio source component is attached to the Player object at each level to play
 
 ## Press Kit and Trailer
 
+[Game Trailer](https://www.youtube.com/watch?v=f9yEC4gjdEY)
+
 **Include links to your presskit materials and trailer.**
 
 **Describe how you showcased your work. How did you choose what to show in the trailer? Why did you choose your screenshots?**
