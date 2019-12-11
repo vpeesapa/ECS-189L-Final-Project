@@ -3,7 +3,7 @@
 
 ## Summary ##
 
-**A paragraph-length pitch for your game.**
+Untitled Platform Game is a platformer consisting of four different levels with their own theme and distinct obstacles the player has to go through. You play as Coble from Mirai City on a quest to collect gems to connect the different worlds in Isolasia.
 
 ## Gameplay explanation ##
 
@@ -104,11 +104,9 @@ The game is divided in Unity into one scene per level. Most of the core logic is
 
 *Jump* - The jump soundtrack effect is from a free sound effect pack from the Unity Asset Store by [Zero Rare](https://assetstore.unity.com/packages/audio/sound-fx/sound-fx-retro-pack-121743).
 
-**Describe the implementation of your audio system.**
-
 An audio source component is attached to the Player object at each level to play the corresponding background sound and the jump sound when the player jumps. In the main menu, an audio source component is attached to the Canvas to play the main menu sound.
 
-**Document the sound style.** 
+We chose to use an 8-bit style soundtrack for our levels similar to our visual style. Each level has a different soundtrack to reflect the theme of each level. The City level has a chill sci-fi music to fit the dark city-scape background and the sci-fi sprites used for this level. For the Jungle level, we chose a more high-paced adventurous sound. The village level has a beach in the background so the soundtrack is a peaceful piano music. Similarly, the Davis level has peaceful flute music playing in the background for the farm-like atmosphere of the city of Davis.
 
 ## Gameplay Testing
 
