@@ -17,15 +17,11 @@ Untitled Platform Game is a platform adventure game consisting of four different
 
 Avoid obstacles and collect enough gems required to open up the portal connecting to the next world. Used the arrow keys or A and D keys to move left and right. The player can jump by pressing the space bar and the jump height will increase if the space bar is held down longer. The Z key can be pressed to run faster. In order to clear levels, the player may also be required to use a combination of keys (such as holding Z and space to make a long jump).
 
-## Levels ##
+## Levels
 
 The game is divided into four levels, each written and designed by one of the team members. Level design was a significant component of the development process. They are roughly ordered by increasing difficulty.
 
-### Mirai City ###
-
-The first level of the game was designed to introduce the player to the general mechanics of the game. The various obstacles that are found along the way (blades, conveyer belts, and acid pools) are reminiscent of a city that is well-developed but at the same time, home to a lot of toxicity, both literally and figuratively. The name of the city is based on the Japanese word for 'future,' further illustrating the more futuristic' part of Isolasia.
-
-### Davis ###
+### Davis
 
 The last level is stylistically based on UC Davis using photography from Davis. The squirrels flying from trees to attack are representative of the typical Davis experience. The music would be one of the pastoral pieces by Vaughn Williams, but his works are in copyright. The level design is intended to contain unexpected elements, but without overtly deceptive design.
 
