@@ -11,7 +11,6 @@ public class CameraController : MonoBehaviour
     [SerializeField] private GameObject BottomBound;
     private Camera AttachedCamera;
 
-
     // Start is called before the first frame update
     void Start()
     {

@@ -11,12 +11,6 @@ public class PanelFadeController : MonoBehaviour
     private float FadeDelay = 20.0f;
     private float TimeSinceStarted = 0.0f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {

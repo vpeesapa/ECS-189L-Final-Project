@@ -39,8 +39,6 @@ public class PlayerController : MonoBehaviour
     private bool OnConveyor = false;
     private float ConveyorSpeed = 3.0f;
     private Vector3 MovementDirection = new Vector3(1.0f, 0.0f, 0.0f);
-    private bool IsPortal = false;
-    private int NumDeaths = 0;
     private int LivesRemaining = 3;
     private AudioSource Audio;
     private bool Invincible = false;
@@ -87,7 +85,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D other)
     {
-        //bool wasGrounded = this.IsGrounded;
 
         if (other.gameObject.CompareTag("Ground"))
         {
@@ -133,10 +130,6 @@ public class PlayerController : MonoBehaviour
             this.Die();
         }
 
-        // if(!wasGrounded && this.IsGrounded)
-        // {
-        //     StartCoroutine(Squeeze(this.YSqueeze, this.XSqueeze, this.SqueezeSeconds));
-        // }
     }
 
     public void OnCollisionExit2D(Collision2D other)
@@ -157,11 +150,6 @@ public class PlayerController : MonoBehaviour
             this.IsGrounded = false;
             this.OnConveyor = false;
             this.gameObject.GetComponent<BoxCollider2D>().transform.SetParent(null);
-        }
-        else if (other.gameObject.CompareTag("Portal"))
-        {
-            this.IsPortal = false;
-
         }
     }
 
@@ -255,9 +243,9 @@ public class PlayerController : MonoBehaviour
         updateMoveAnimation(horizontalMovement);
 
 
-        if(Mathf.Approximately(horizontalMovement, 0.0f));
+       
         
-        else if(horizontalMovement > 0)
+        if(horizontalMovement > 0)
         {
             this.MovementDirection = new Vector3(1.0f, 0.0f, 0.0f);
         }
@@ -358,7 +346,6 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         this.Audio.PlayOneShot(this.DeathSound, 2.0f);
-        this.NumDeaths += 1;
         this.LivesRemaining -= 1;
         this.UILivesRemaining.text = this.LivesRemaining.ToString();
         this.gameObject.transform.position = this.SpawnLocation.transform.position;
@@ -371,7 +358,6 @@ public class PlayerController : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        Debug.Log(1);
         SceneManager.LoadScene(this.NextScene);
     }
 }

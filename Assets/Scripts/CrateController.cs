@@ -7,11 +7,6 @@ public class CrateController : MonoBehaviour
     [SerializeField] private GameObject CrateSpawn;
     [SerializeField] private GameObject BottomLine;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         if(this.transform.position.y < this.BottomLine.transform.position.y)
