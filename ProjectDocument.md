@@ -29,7 +29,11 @@ The first level of the game was designed to introduce the player to the general 
 
 ### Hidden Forest ###
 
-The second level of the level is a completely different dynamic than the first level. It is a jungle/forest like environment with more moving platforms and new obstacles(falling spikes). It shows a different primitive side of Isolasia than the previous level.
+The second level of the game is a completely different dynamic than the first level. It is a jungle/forest like environment with more moving platforms and new obstacles(falling spikes). It shows a different primitive side of Isolasia than the previous level.
+
+### Bayside Village ###
+
+The third level of the game is a bit trickier compared to the previous two levels because there are many moving platforms, spikes and enemeies to dodge, and some small puzzle elements added to this level. This level is a grassy village environment that is near some sort of bay or ocean area. This level gives off a more relaxing ambience compared to that of the previous two levels.
 
 ### Davis ###
 
