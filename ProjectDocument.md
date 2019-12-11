@@ -87,11 +87,13 @@ The players movement is done on the 2D plane where the player is able to move le
 
 **List your assets including their sources and licenses.**
 
-*Jungle* - The background sound in the Jungle level is from [Ludum Dare](http://ludumdare.com/compo/ludum-dare-32/).
+*Jungle* - The background soundtrack in the Jungle level is from [Ludum Dare](http://ludumdare.com/compo/ludum-dare-32/).
 
-*Village* - The background sound in the Village level is from the Unity Asset Store by [Zero Rare](https://assetstore.unity.com/packages/audio/sound-fx/sound-fx-retro-pack-121743).
+*Village* - The background soundtrack in the Village level is from the Unity Asset Store by [Zero Rare](https://assetstore.unity.com/packages/audio/sound-fx/sound-fx-retro-pack-121743).
 
-*Jump* - The jump sound effect is from a free sound effect pack from the Unity Asset Store by [Zero Rare](https://assetstore.unity.com/packages/audio/sound-fx/sound-fx-retro-pack-121743).
+*City* - The background soundtrack in the City level is from [Sound Image](https://soundimage.org/city-urban/).
+
+*Jump* - The jump soundtrack effect is from a free sound effect pack from the Unity Asset Store by [Zero Rare](https://assetstore.unity.com/packages/audio/sound-fx/sound-fx-retro-pack-121743).
 
 **Describe the implementation of your audio system.**
 
