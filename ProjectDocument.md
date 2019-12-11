@@ -1,3 +1,7 @@
+https://assetstore.unity.com/packages/2d/characters/sunny-land-103349
+https://assetstore.unity.com/packages/2d/characters/tiny-rpg-forest-114685
+https://assetstore.unity.com/packages/audio/sound-fx/sound-fx-retro-pack-121743
+https://assetstore.unity.com/packages/2d/characters/slime-character-157405
 # Game Basic Information #
 
 ## Summary ##
@@ -26,21 +30,36 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 ## User Interface
 
-**Describe your user interface and how it relates to gameplay. This can be done via the template.**
+As a platformer game, we wanted to make our UI simple and as least distracting as possible. 
+
+*Main Menu* - Our initial main menu consists of three buttons: Play, Help, and Exit. When the user presses play, the first level is loaded.
+
+*In-game UI* - The in-game UI consists of two counters, one for the number of lives the player has remaining and the number of gems the player has collected in the current level. There is a sprite next to each counter to represent what each counter indicates. 
 
 ## Movement/Physics
 
 **Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your movement scripts that do not use the physics system?**
+The players movement is done on the 2D plane where the player is able to move left and right on the horizontal axes and jump on the verticles axes. The player moves left and right at a fixed speed which can be increased if the Z key is pressed.
 
 ## Animation and Visuals
 
-**List your assets including their sources and licenses.**
+*Character Sprite* - The player character sprite was made by [Jessica Munguia](https://jesse-m.itch.io/jungle-pack).
 
-**Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
+*Jungle* - The tiles used in the jungle map and the falling spikes were made by [Jessica Munguia](https://jesse-m.itch.io/jungle-pack).
 
 ## Input
 
-**Describe the default input configuration.**
+*2D Movement* - Use left and right arrow keys or alterantively A and D keys to move left and right.
+
+*Jump* - The space key is used to jump. Holding the space key longer will result in the player jumping higher.
+
+*Running* - Holding the Z key while moving will make the character move faster. Holding Z while jumping will make the character jump further.
+
+*Interacting with Portals* - Pressing the R key near a portal will allow the player to traverse through levels if they have collected the required number of gems.
+
+*Invinciblity* - Pressing the Control and F1 keys at the same time will enable a cheat mode to make the player become invulnerable to enemies and other obstacles.
+
+*Skip level* - Pressing the Control and F2 keys at the same time will allow the user to skip the current level.
 
 **Add an entry for each platform or input style your project supports.**
 
@@ -54,8 +73,13 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 **List your assets including their sources and licenses.**
 
+*Background Sound* - The background sound in the jungle level is from [Ludum Dare](http://ludumdare.com/compo/ludum-dare-32/).
+
+*Jump* - The jump sound effect is from a free sound effect pack from the Unity Asset Store by [Zero Rare](https://assetstore.unity.com/packages/audio/sound-fx/sound-fx-retro-pack-121743).
+
 **Describe the implementation of your audio system.**
 
+An audio source component is attached to the Player object at each level to play the corresponding background sound and the jump sound when the player jumps. In the main menu, an audio source component is attached to the Canvas to play the main menu sound.
 **Document the sound style.** 
 
 ## Gameplay Testing

@@ -62,7 +62,10 @@ public class PlayerController : MonoBehaviour
 
         else if (other.gameObject.CompareTag("Portal"))
         {
-            this.IsPortal = true;
+            if (this.NumGemsLeft <= 0)
+            {
+                LoadNextLevel();
+            }
 
         }
         else if (other.gameObject.CompareTag("Enemy") && !this.Invincible)
@@ -306,15 +309,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-     
-            if (this.IsPortal && this.NumGemsLeft <= 0)
-            {
-                LoadNextLevel();
-            }
-        }
-
+  
         if((Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl)) && Input.GetKeyDown(KeyCode.F1))
         {
             LoadNextLevel();
