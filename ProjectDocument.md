@@ -70,7 +70,7 @@ The players movement is done on the 2D plane where the player is able to move le
 **List your assets including their sources and licenses.**
 
 **Describe the implementation of your audio system.**
-
+An audio source component is attached to the Player object at each level to play the corresponding background sound and the jump sound when the player jumps. In the main menu, an audio source component is attached to the Canvas to play the main menu sound.
 **Document the sound style.** 
 
 ## Gameplay Testing
