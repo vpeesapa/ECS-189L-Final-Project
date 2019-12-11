@@ -151,7 +151,7 @@ The general consensus of our gameplay testers was that the gameplay was a bit on
 
 ## Narrative Design
 
-The core narrative of the game is that the player controls Koble to explore the isolated worlds of Isolasia, which was once a thriving continent, but due to a cataclysmic natural disaster in the past, is left on the brink of destruction. The exposition done at the beginning of the game allows the player to get a general idea of what Isolasia is like.
+The core narrative of the game is that the player controls Koble to explore the isolated worlds of Isolasia, which was once a thriving continent, but due to a cataclysmic natural disaster in the past, is left on the brink of destruction and the only way that the player can proceed is by collecting enough *Power Gems* to unlock the portal to the next world. The exposition done at the beginning of the game allows the player to get a general idea of what Isolasia is like.
 
 We also had each level design be as unique and distinct as possible to further illustrate that these worlds have been isolated for a long period of time, allowing the player to further interpret the story behind the design of each level in their own ways.
 
