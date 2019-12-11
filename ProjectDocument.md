@@ -10,6 +10,13 @@
 **In this section, explain how the game should be played. Treat this as a manual within a game. It is encouraged to explain the button mappings and the most optimal gameplay strategy.**
 
 
+## Levels
+
+The game is divided into four levels, each written by one of the team members. Level design was a significant component of the development process. They are roughly ordered by increasing difficulty.
+
+### Davis
+
+The last level is stylistically based on UC Davis using photography from Davis. The squirrels flying from trees to attack are representative of the typical Davis experience. The music would be one of the pastoral pieces by Vaughn Williams, but his works are in copyright. The level design is intended to contain unexpected elements, but without overtly deceptive design.
 
 
 # Main Roles #
