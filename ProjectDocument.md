@@ -39,7 +39,8 @@ As a platformer game, we wanted to make our UI simple and as least distracting a
 ## Animation and Visuals
 
 
-*Character Sprite* - The player character sprite was made by [Jessica Munguia](https://jesse-m.itch.io/jungle-pack)
+*Character Sprite* - The player character sprite was made by [Jessica Munguia](https://jesse-m.itch.io/jungle-pack).
+
 *Jungle* - The tiles used in the jungle map and the spikes falling down were made by [Jessica Munguia](https://jesse-m.itch.io/jungle-pack).
 
 ## Input
