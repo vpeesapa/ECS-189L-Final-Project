@@ -123,8 +123,11 @@ An audio source component is attached to the Player object at each level to play
 ## Press Kit and Trailer
 
 [Game Trailer](https://www.youtube.com/watch?v=f9yEC4gjdEY)
+[Press Kit](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/master/Press%20Kit.pdf)
 
 The trailer includes a couple clips from each of the levels, and tries to demonstrate the basic game dynamics, as well as some of the interesting design elements in particular levels.
+
+The press kit includes screenshots of all the levels that are present in the game along with giving a general description of the game. Some other press kits that we took inpiration from are [Press Kit 1](https://github.com/isaboi/ECS189L_GameProject/blob/master/TheStruggle_PressKit.pdf) and [Press Kit 2](https://github.com/kyle-andrus/RIP/blob/master/PressKit/presskitty.md).
 
 
 ## Game Feel
