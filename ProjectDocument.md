@@ -1,7 +1,4 @@
-https://assetstore.unity.com/packages/2d/characters/sunny-land-103349
-https://assetstore.unity.com/packages/2d/characters/tiny-rpg-forest-114685
-https://assetstore.unity.com/packages/audio/sound-fx/sound-fx-retro-pack-121743
-https://assetstore.unity.com/packages/2d/characters/slime-character-157405
+
 # Game Basic Information #
 
 ## Summary ##
@@ -36,6 +33,8 @@ As a platformer game, we wanted to make our UI simple and as least distracting a
 
 *In-game UI* - The in-game UI consists of two counters, one for the number of lives the player has remaining and the number of gems the player has collected in the current level. There is a sprite next to each counter to represent what each counter indicates. 
 
+*Text Font* - The font used in various texts in the UI is from [1001 Free Fonts](https://www.1001freefonts.com/computer-fonts.php).
+
 ## Movement/Physics
 
 **Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your movement scripts that do not use the physics system?**
@@ -43,9 +42,24 @@ The players movement is done on the 2D plane where the player is able to move le
 
 ## Animation and Visuals
 
+*Portal* - The portal sprite was made by [Elthen](https://elthen.itch.io/2d-pixel-art-portal-sprites).
+
 *Character Sprite* - The player character sprite was made by [Jessica Munguia](https://jesse-m.itch.io/jungle-pack).
 
-*Jungle* - The tiles used in the jungle map and the falling spikes were made by [Jessica Munguia](https://jesse-m.itch.io/jungle-pack).
+*Jungle* - The tiles used in the jungle map, the background and the falling spikes were made by [Jessica Munguia](https://jesse-m.itch.io/jungle-pack).
+
+*Village Level* - The moving platforms and the tiles were made by ANSIMUZ from the [Unity Asset Store](https://assetstore.unity.com/packages/2d/characters/sunny-land-103349).
+
+*Village Background Props* - The trees and the other background props used in the Village level were made by ANSIMUZ from the [Unity Asset Store](https://assetstore.unity.com/packages/2d/characters/tiny-rpg-forest-114685).
+
+*Slime Enemies* - The slimes in the Village level were made using a slime sprite made by NYKNCK from the [Unity Asset Store](https://assetstore.unity.com/packages/2d/characters/slime-character-157405).
+
+*City Level* - The background for the City level was from [OpenGameArt](https://opengameart.org/content/backgrounds-for-2d-platformers). The platform and other assets were from [GameArt2d](https://www.gameart2d.com/free-sci-fi-platformer-tileset.html).
+
+*Conveyor Belt* - The conveyor belt used in the City level was from OpenGameArt by [Chromaeleon](https://opengameart.org/content/conveyor-belts-spritesheet-anims).
+
+
+
 
 ## Input
 
@@ -73,13 +87,18 @@ The players movement is done on the 2D plane where the player is able to move le
 
 **List your assets including their sources and licenses.**
 
-*Background Sound* - The background sound in the jungle level is from [Ludum Dare](http://ludumdare.com/compo/ludum-dare-32/).
+*Jungle* - The background soundtrack in the Jungle level is from [Ludum Dare](http://ludumdare.com/compo/ludum-dare-32/).
 
-*Jump* - The jump sound effect is from a free sound effect pack from the Unity Asset Store by [Zero Rare](https://assetstore.unity.com/packages/audio/sound-fx/sound-fx-retro-pack-121743).
+*Village* - The background soundtrack in the Village level is from the Unity Asset Store by [Zero Rare](https://assetstore.unity.com/packages/audio/sound-fx/sound-fx-retro-pack-121743).
+
+*City* - The background soundtrack in the City level is from [Sound Image](https://soundimage.org/city-urban/).
+
+*Jump* - The jump soundtrack effect is from a free sound effect pack from the Unity Asset Store by [Zero Rare](https://assetstore.unity.com/packages/audio/sound-fx/sound-fx-retro-pack-121743).
 
 **Describe the implementation of your audio system.**
 
 An audio source component is attached to the Player object at each level to play the corresponding background sound and the jump sound when the player jumps. In the main menu, an audio source component is attached to the Canvas to play the main menu sound.
+
 **Document the sound style.** 
 
 ## Gameplay Testing
