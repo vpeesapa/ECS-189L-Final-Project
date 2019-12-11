@@ -79,6 +79,8 @@ The players movement is done on the 2D plane where the player is able to move le
 
 ## Input
 
+Our game supports keyboard and mouse inputs. Mouse is used to navigate the UI and the menus while the keyboard is used to move the player. The [PlayerController Script](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/74b7c59440e6e6b1f6f5a13922ce3baceec1f69a/Assets/Scripts/PlayerController.cs#L273) controls the player's movement.
+
 *2D Movement* - Use left and right arrow keys or alterantively A and D keys to move left and right.
 
 *Jump* - The space key is used to jump. Holding the space key longer will result in the player jumping higher.
@@ -96,6 +98,14 @@ The players movement is done on the 2D plane where the player is able to move le
 ## Game Logic
 
 The game is divided in Unity into one scene per level. Most of the core logic is in the `PlayerController` script attached to the `Player` object in each scene, which is configured with a variety of `[SerializeField]`s. This maintains the state needed within the level, and interfaces with UI and input. Some UI related objects are copied between scenes; a better overall architecture would probably make much heavier use of prefabs.
+
+The game is divided in Unity into one scene per level. Most of the core logic is in the `PlayerController` script attached to the `Player` object in each scene, which is configured with a variety of `[SerializeField]`s. This maintains the state needed within the level, and interfaces with UI and input. Some UI related objects are copied between scenes; a better overall architecture would probably make much heavier use of prefabs.
+
+There are two variable 'IsGrounded' and 'IsJumping' in the 'PlayerController' script to control the jump of the player. The 'IsGrounded' variable checks if the player is on the ground or a platform so that the player can not jump more than once in the air. The 'IsJumping' variable is used to check if the player is in the air so that the proper animation is used. If the player is in the air, the player should not be in the running animation.
+
+'PlayerController' script also holds the variables 'GemsCollected' and 'LivesRemaining'. These variables are used to display the proper counters on the UI of the game. The 'GemsCollected' variable is also used to check if the player has the correct number of gems to pass through a portal. The 'LivesRemaning' variable will make the user restart the level if the value reaches 0.
+
+The 'PlayerController' script also checks for interactions with the environment. For instance, if the player is on a conveyor belt, the player is slowly moved in the same direction the conveyor belt is moving. The script also checks if the player has collided with a gem and collects the gem. Collision with enemies and other obstacles such as spikes are also checked and the player goes back to the start of the level with one less life. If the player collides with a portal with the required number of gems, the player is automatically transported to the next level.
 
 # Sub-Roles
 
@@ -149,3 +159,4 @@ The press kit includes screenshots of all the levels that are present as well as
 *Hitbox* - The hotbox of obstacles were adjusted so that the player doesn't die when the player visually does not collide with obstacles.
 
 *Pause Menu* - We added a pause menu to allow the user to pause the game whenever they want.
+
