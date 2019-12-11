@@ -67,7 +67,7 @@ As a platformer game, we wanted to make our UI simple and as least distracting a
 
 Since the game is a 2D platformer, we wanted the controls for the character to be as simple as possible but still feel fluid and make the player feel like they have complete control over the character.  
   
-*Horizontal Movement* - We wanted the player to have sharp control over the character so we opted to use *[Input.GetAxisRaw](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/74b7c59440e6e6b1f6f5a13922ce3baceec1f69a/Assets/Scripts/PlayerController.cs#L253)*which returns discrete values like -1, 0, and +1 rather than *Input.GetAxis*which returns continuous values in the range -1 to +1.  
+*Horizontal Movement* - We wanted the player to have sharp control over the character so we opted to use [Input.GetAxisRaw](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/74b7c59440e6e6b1f6f5a13922ce3baceec1f69a/Assets/Scripts/PlayerController.cs#L253) which returns discrete values like -1, 0, and +1 rather than Input.GetAxis which returns continuous values in the range -1 to +1.  
   
 *Sprint* -  The controls for the platform take heavy inspiration from the game Super Mario Bros. so we have a normal running speed when you move the character with the arrow keys and a much faster running speed when the 'Z' key is held down while moving the arrow keys. The [moving speed of the character is modified](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/74b7c59440e6e6b1f6f5a13922ce3baceec1f69a/Assets/Scripts/PlayerController.cs#L248-L251) appropriately when the 'Z' key is held down.
   
