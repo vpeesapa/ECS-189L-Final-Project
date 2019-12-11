@@ -116,6 +116,8 @@ There were also other scripts that also controlled the movements for several obs
 
 *Gustav Holst's music* - [Venus](https://en.wikipedia.org/wiki/File:Holst-_venus.ogg), used in the Davis level, and [Mercury](https://en.wikipedia.org/wiki/File:Holst_The_Planets_Mercury.ogg), used by the trailer, are public domain performed by the U.S. Air Force Band, downloaded from Wikipedia.
 
+The visuals for our game has a simplistic retro feel. Our platformer game is meant to be played in a speedrun style so we wanted to keep our visuals and animations as simple as possible while mantaining the immersiveness of our game. To make each level feel dynamic we used different types of visuals for each level. The city level has a sci-fi feeling with obstacles such as an acid pool, saw blade and a conveyor belt. The jungle level and city level uses tilemaps with tiles that fit the theme of the level. The davis level uses pictures taken in Davis as sprites.
+
 Koble's animation is controlled by the Unity editors Animator component. Kobe goes through three animation states throughout the game: idle, run, and mid air. The sprites for the different animation states were all provided by [Jessica Munguia](https://jesse-m.itch.io/jungle-pack).
 
 
