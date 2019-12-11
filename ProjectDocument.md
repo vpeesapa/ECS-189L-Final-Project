@@ -147,11 +147,13 @@ We chose to use an 8-bit style soundtrack for our levels similar to our visual s
 
 ### Summary of key findings
 
-A general consensus of our gameplay testers was that the gameplay was a bit on the challenging side. While this didn't hinder them from enjoying the game, there were a few that questioned if the higher difficulty curve would stop more casual gamers from playing the game. At the same time, there were a few that mentioned that hit-boxes (or collision boxes) were being activated even if the player was not touching any hazards. Aside from that, a majority of them were happy with the visuals, including the UI elements, and the level progression of the game.
+The general consensus of our gameplay testers was that the gameplay was a bit on the challenging side. While this didn't hinder them from enjoying the game, there were a few that questioned if the higher difficulty curve would stop more casual gamers from playing the game. At the same time, there were a few that mentioned that hit-boxes (or collision boxes) were being activated even if the player was not touching any hazards. Aside from that, a majority of them were happy with the visuals, including the UI elements, and the level progression of the game.
 
 ## Narrative Design
 
-**Document how the narrative is present in the game via assets, gameplay systems, and gameplay.** 
+The core narrative of the game is that the player controls Koble to explore the isolated worlds of Isolasia, which was once a thriving continent, but due to a cataclysmic natural disaster in the past, is left on the brink of destruction. The exposition done at the beginning of the game allows the player to get a general idea of what Isolasia is like.
+
+We also had each level design be as unique and distinct as possible to further illustrate that these worlds have been isolated for a long period of time, allowing the player to further interpret the story behind the design of each level in their own ways.
 
 ## Press Kit and Trailer
 
