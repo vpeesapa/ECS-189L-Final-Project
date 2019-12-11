@@ -25,7 +25,7 @@ The game is divided into four levels, each written and designed by one of the te
 
 ### Mirai City ###
 
-The first level of the game was designed to introduce the player to the general mechanics of the game. The various obstacles that are found along the way (blades, conveyer belts, and acid pools) are reminiscent of a city that is well-developed but at the same time, home to a lot of toxicity, both literally and figuratively. The name of the city is based on the Japanese word for 'future,' further illustrating the more futuristic' part of Isolasia.
+The first level of the game was designed to introduce the player to the general mechanics of the game. The various obstacles that are found along the way (blades, conveyer belts, and acid pools) are reminiscent of a city that is well-developed but at the same time, home to a lot of toxicity, both literally and figuratively. The name of the city is based on the Japanese word for 'future,' further illustrating the more 'futuristic' part of Isolasia.
 
 ### Hidden Forest ###
 
@@ -42,24 +42,21 @@ The last level is stylistically based on UC Davis using photography from Davis. 
 
 # Main Roles #
 
-Your goal is to relate the work of your role and sub-role in terms of the content of the course. Please look at the role sections below for specific instructions for each role.
-
-Below is a template for you to highlight items of your work. These provide the evidence needed for your work to be evaluated. Try to have at least 4 such descriptions. They will be assessed on the quality of the underlying system and how they are linked to course content. 
-
-*Short Description* - Long description of your work item that includes how it is relevant to topics discussed in class. [link to evidence in your repository](https://github.com/dr-jam/ECS189L/edit/project-description/ProjectDocumentTemplate.md)
-
-Here is an example:  
-*Procedural Terrain* - The background of the game consists of procedurally-generated terrain that is produced with Perlin noise. This terrain can be modified by the game at run-time via a call to its script methods. The intent is to allow the player to modify the terrain. This system is based on the component design pattern and the procedural content generation portions of the course. [The PCG terrain generation script](https://github.com/dr-jam/CameraControlExercise/blob/513b927e87fc686fe627bf7d4ff6ff841cf34e9f/Obscura/Assets/Scripts/TerrainGenerator.cs#L6).
-
-You should replay any **bold text** with your relevant information. Liberally use the template when necessary and appropriate.
-
 ## User Interface
 
 As a platformer game, we wanted to make our UI simple and as least distracting as possible. 
 
-*Main Menu* - Our initial main menu consists of three buttons: Play, Help, and Exit. When the user presses play, the first level is loaded.
+*Exposition* - The exposition of the world and the plot was done in the beginning so as to introduce the player to the premise of the game. It is displayed through a panel that is present in the 'MainMenu' and has a [PanelFadeController](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/master/Assets/Scripts/PanelFadeController.cs) script attached to it which lets the panel to fade out after 20 seconds or at the press of the spacebar.
 
-*In-game UI* - The in-game UI consists of two counters, one for the number of lives the player has remaining and the number of gems the player has collected in the current level. There is a sprite next to each counter to represent what each counter indicates. 
+*Main Menu* - Our initial main menu consists of three buttons: Play, Help, and Exit. When the user presses play, the first level is loaded. [LoadSceneOnClick](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/master/Assets/Scripts/LoadSceneOnClick.cs) is a script that allows us to load the next scene, which in our case is the next level, with the press of a button.
+
+*HUD* - The HUD consists of two counters, one for the number of lives the player has remaining and the number of gems the player has collected in the current level. There is a sprite next to each counter to represent what each counter indicates. It also contains a 'Pause Button' that allows the player to pause the game whenever they want to. The HUD also displays the name of the level upon first playing that level. The display for the level names was inspired by several Pokemon games, which have a similar feature whenever the player enters a new city or town. The name of the level fades out after a certain amount of time and is controlled by [this](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/a6b1898250899465aea09f3f3627d17f387ec472/Assets/Scripts/PlayerController.cs#L334) part of the 'PlayerController' script. There is also a number that's constantly displayed in front of the portal and which indicates the number of gems the player has yet to collect before they are able to clear the level. This number is constantly modified in the [PlayerController](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/a6b1898250899465aea09f3f3627d17f387ec472/Assets/Scripts/PlayerController.cs#L55) script whenever the player connects the gem. The general idea for this is inspired from Super Mario 64 and more recently, Super Mario Odyssey, where progression is done by collecting a certain amount of 'Power Stars' or 'Power Moons.'
+
+*Pause Menu* - There is a pause menu that's been implemented in every level, which allows the player to pause the game and take a breather. The UI for the pause menu is only displayed upon clicking the pause button from the HUD. The pause menu contains three buttons: a 'resume' button that allows the player to continue playing from where they left off, a 'restart' button that lets them restart the level from the beginning, and an 'exit' button that lets them go back to the main menu. Most of the logic for this menu is similar to the logic for the main menu and also utilizes the [LoadSceneOnClick](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/master/Assets/Scripts/LoadSceneOnClick.cs) script.
+
+*Game Over Screen* - There's also a game over screen that's been implemented in every level. It is initially hidden from the player and is only displayed when the player had lost all of their lives for that level. The menu comprises of a 'Game Over' message and two buttons: a 'restart' button that allows the player to restart the level from scratch and an 'exit' button that lets them return to the main menu. Once again, the underlying logic utilizes the [LoadSceneOnClick](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/master/Assets/Scripts/LoadSceneOnClick.cs) script.
+
+*Thank You Screen* - There's a 'thank you screen,' which is displayed after the player clears the Davis level. It contains a message thanking the player for playing and beating the game as well a button that lets them return to the main menu. The button once again utilizes the [LoadSceneOnClick](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/master/Assets/Scripts/LoadSceneOnClick.cs) script.
 
 *Text Font* - The font used in various texts in the UI is from [1001 Free Fonts](https://www.1001freefonts.com/computer-fonts.php).
 
