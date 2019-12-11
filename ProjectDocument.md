@@ -1,3 +1,7 @@
+https://assetstore.unity.com/packages/2d/characters/sunny-land-103349
+https://assetstore.unity.com/packages/2d/characters/tiny-rpg-forest-114685
+https://assetstore.unity.com/packages/audio/sound-fx/sound-fx-retro-pack-121743
+https://assetstore.unity.com/packages/2d/characters/slime-character-157405
 # Game Basic Information #
 
 ## Summary ##
