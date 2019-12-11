@@ -1,17 +1,25 @@
+# Untitled Platformer Game #
+
+# Team Members #
+
+1. Sahil Faruque
+2. Justin Lim
+3. Varun Peesapati
+4. Ian Scott
 
 # Game Basic Information #
 
 ## Summary ##
 
-Untitled Platform Game is a platformer consisting of four different levels with their own theme and distinct obstacles the player has to go through. You play as Coble from Mirai City on a quest to collect gems to connect the different worlds in Isolasia.
+Untitled Platform Game is a platform adventure game consisting of four different levels with their own theme and distinct obstacles the player has to go through. You play as Koble, an explorer from Mirai City, who's on a quest to collect the *Power Gems* that unlock portals connecting the different worlds of the disconnected continent of Isolasia.
 
 ## Gameplay explanation ##
 
-Avoid obstacles and collect enough gems required to open up the portal connecting to the next word. Used the arrow keys or A and D keys to move left and right. The player can jump by pressing the space bar and the jump height will increase if the space bar is held down longer. The Z key can be pressed to run faster. 
+Avoid obstacles and collect enough gems required to open up the portal connecting to the next world. Used the arrow keys or A and D keys to move left and right. The player can jump by pressing the space bar and the jump height will increase if the space bar is held down longer. The Z key can be pressed to run faster. In order to clear levels, the player may also be required to use a combination of keys (such as holding Z and space to make a long jump).
 
 ## Levels
 
-The game is divided into four levels, each written by one of the team members. Level design was a significant component of the development process. They are roughly ordered by increasing difficulty.
+The game is divided into four levels, each written and designed by one of the team members. Level design was a significant component of the development process. They are roughly ordered by increasing difficulty.
 
 ### Davis
 
@@ -71,6 +79,8 @@ The players movement is done on the 2D plane where the player is able to move le
 
 ## Input
 
+Our game supports keyboard and mouse inputs. Mouse is used to navigate the UI and the menus while the keyboard is used to move the player. The [PlayerController Script](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/74b7c59440e6e6b1f6f5a13922ce3baceec1f69a/Assets/Scripts/PlayerController.cs#L273) controls the player's movement.
+
 *2D Movement* - Use left and right arrow keys or alterantively A and D keys to move left and right.
 
 *Jump* - The space key is used to jump. Holding the space key longer will result in the player jumping higher.
@@ -88,6 +98,14 @@ The players movement is done on the 2D plane where the player is able to move le
 ## Game Logic
 
 The game is divided in Unity into one scene per level. Most of the core logic is in the `PlayerController` script attached to the `Player` object in each scene, which is configured with a variety of `[SerializeField]`s. This maintains the state needed within the level, and interfaces with UI and input. Some UI related objects are copied between scenes; a better overall architecture would probably make much heavier use of prefabs.
+
+The game is divided in Unity into one scene per level. Most of the core logic is in the `PlayerController` script attached to the `Player` object in each scene, which is configured with a variety of `[SerializeField]`s. This maintains the state needed within the level, and interfaces with UI and input. Some UI related objects are copied between scenes; a better overall architecture would probably make much heavier use of prefabs.
+
+There are two variable `IsGrounded` and `IsJumping` in the `PlayerController` script to control the jump of the player. The `IsGrounded` variable checks if the player is on the ground or a platform so that the player can not jump more than once in the air. The `IsJumping` variable is used to check if the player is in the air so that the proper animation is used. If the player is in the air, the player should not be in the running animation.
+
+`PlayerController` script also holds the variables `GemsCollected` and `LivesRemaining`. These variables are used to display the proper counters on the UI of the game. The `GemsCollected` variable is also used to check if the player has the correct number of gems to pass through a portal. The `LivesRemaning` variable will make the user restart the level if the value reaches 0.
+
+The `PlayerController` script also checks for interactions with the environment. For instance, if the player is on a conveyor belt, the player is slowly moved in the same direction the conveyor belt is moving. The script also checks if the player has collided with a gem and collects the gem. Collision with enemies and other obstacles such as spikes are also checked and the player goes back to the start of the level with one less life. If the player collides with a portal with the required number of gems, the player is automatically transported to the next level.
 
 # Sub-Roles
 
@@ -109,9 +127,13 @@ We chose to use an 8-bit style soundtrack for our levels similar to our visual s
 
 ## Gameplay Testing
 
-**Add a link to the full results of your gameplay tests.**
+**Please use your UC Davis e-mail address to access the following link.**
 
-**Summarize the key findings from your gameplay tests.**
+[Link to results of gameplay tests](https://docs.google.com/spreadsheets/d/1W2F9wkQy_VTyHWFTHw35HolKg1pSE9ViAUyBER8Ghak/edit?usp=sharing)
+
+### Summary of key findings
+
+A general consensus of our gameplay testers was that the gameplay was a bit on the challenging side. While this didn't hinder them from enjoying the game, there were a few that questioned if the higher difficulty curve would stop more casual gamers from playing the game. At the same time, there were a few that mentioned that hit-boxes (or collision boxes) were being activated even if the player was not touching any hazards. Aside from that, a majority of them were happy with the visuals, including the UI elements, and the level progression of the game.
 
 ## Narrative Design
 
@@ -125,7 +147,7 @@ We chose to use an 8-bit style soundtrack for our levels similar to our visual s
 
 The trailer includes a couple clips from each of the levels, and tries to demonstrate the basic game dynamics, as well as some of the interesting design elements in particular levels.
 
-The press kit includes screenshots of all the levels that are present in the game along with giving a general description of the game. Some other press kits that we took inpiration from are [Press Kit 1](https://github.com/isaboi/ECS189L_GameProject/blob/master/TheStruggle_PressKit.pdf) and [Press Kit 2](https://github.com/kyle-andrus/RIP/blob/master/PressKit/presskitty.md).
+The press kit includes screenshots of all the levels that are present as well as giving a general description of the game. Some other press kits that we took inspiration from are [Press Kit 1](https://github.com/isaboi/ECS189L_GameProject/blob/master/TheStruggle_PressKit.pdf) and [Press Kit 2](https://github.com/kyle-andrus/RIP/blob/master/PressKit/presskitty.md).
 
 
 ## Game Feel
@@ -137,3 +159,4 @@ The press kit includes screenshots of all the levels that are present in the gam
 *Hitbox* - The hotbox of obstacles were adjusted so that the player doesn't die when the player visually does not collide with obstacles.
 
 *Pause Menu* - We added a pause menu to allow the user to pause the game whenever they want.
+
