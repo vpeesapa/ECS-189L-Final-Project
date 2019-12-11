@@ -7,8 +7,7 @@ Untitled Platform Game is a platformer consisting of four different levels with 
 
 ## Gameplay explanation ##
 
-**In this section, explain how the game should be played. Treat this as a manual within a game. It is encouraged to explain the button mappings and the most optimal gameplay strategy.**
-
+Avoid obstacles and collect enough gems required to open up the portal connecting to the next word. Used the arrow keys or A and D keys to move left and right. The player can jump by pressing the space bar and the jump height will increase if the space bar is held down longer. The Z key can be pressed to run faster. 
 
 ## Levels
 
