@@ -61,8 +61,13 @@ As a platformer game, we wanted to make our UI simple and as least distracting a
 
 ## Movement/Physics
 
-**Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your movement scripts that do not use the physics system?**
-The players movement is done on the 2D plane where the player is able to move left and right on the horizontal axes and jump on the verticles axes. The player moves left and right at a fixed speed which can be increased if the Z key is pressed.
+Since the game is a 2D platformer, we wanted the controls for the character to be as simple as possible but still feel fluid and make the player feel like they have complete control over the character.  
+  
+*Horizontal Movement* - We wanted the player to have sharp control over the character so we opted to use *[Input.GetAxisRaw](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/74b7c59440e6e6b1f6f5a13922ce3baceec1f69a/Assets/Scripts/PlayerController.cs#L253)*which returns discrete values like -1, 0, and +1 rather than *Input.GetAxis*which returns continuous values in the range -1 to +1.  
+  
+*Sprint* -  The controls for the platform take heavy inspiration from the game Super Mario Bros. so we have a normal running speed when you move the character with the arrow keys and a much faster running speed when the 'Z' key is held down while moving the arrow keys. The [moving speed of the character is modified](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/74b7c59440e6e6b1f6f5a13922ce3baceec1f69a/Assets/Scripts/PlayerController.cs#L248-L251) appropriately when the 'Z' key is held down.
+  
+*The Jump* -  We wanted the jump to feel a bit dynamic so we made it so that the character [jumps to a certain height based on how long the space bar is held down](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/74b7c59440e6e6b1f6f5a13922ce3baceec1f69a/Assets/Scripts/PlayerController.cs#L273-L301) by using timers. Upon pressing the space bar, a positive upward force is added to the player until the user lets go or the jump timer runs out. At this point, the gravity of Unity's Physics Engine takes over and pulls the player downward. 
 
 ## Animation and Visuals
 
