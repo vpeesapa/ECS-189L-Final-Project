@@ -109,8 +109,6 @@ Our game supports keyboard and mouse inputs. Mouse is used to navigate the UI an
 
 *Invinciblity* - Pressing the Control and F2 keys at the same time will enable a cheat mode to make the player become invulnerable to enemies and other obstacles.
 
-**Add an entry for each platform or input style your project supports.**
-
 ## Game Logic
 
 The game is divided in Unity into one scene per level. Most of the core logic is in the `PlayerController` script attached to the `Player` object in each scene, which is configured with a variety of `[SerializeField]`s. This maintains the state needed within the level, and interfaces with UI and input. Some UI related objects are copied between scenes; a better overall architecture would probably make much heavier use of prefabs.
@@ -145,7 +143,7 @@ We chose to use an 8-bit style soundtrack for our levels similar to our visual s
 
 **Please use your UC Davis e-mail address to access the following link.**
 
-[Link to results of gameplay tests](https://docs.google.com/spreadsheets/d/1W2F9wkQy_VTyHWFTHw35HolKg1pSE9ViAUyBER8Ghak/edit?usp=sharing)
+[Link to results of gameplay testing](https://docs.google.com/spreadsheets/d/1W2F9wkQy_VTyHWFTHw35HolKg1pSE9ViAUyBER8Ghak/edit?usp=sharing)
 
 ### Summary of key findings
 
@@ -173,7 +171,7 @@ Various subtle things were added to make the gameplay experience better for the 
 
 *Narrative*  - We wanted to make our game as immersive as possible by displaying the narrative of the game as soon as the game starts.
 
-*Hitbox*  - The hotbox of obstacles were adjusted so that the player doesn't die when the player visually does not collide with obstacles.
+*Hitbox*  - The hitbox of obstacles were adjusted so that the player doesn't die when the player visually does not collide with obstacles.
 
 *Pause Menu*  - We added a pause menu to allow the user to pause the game whenever they want.
 
