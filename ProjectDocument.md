@@ -27,6 +27,10 @@ The game is divided into four levels, each written and designed by one of the te
 
 The first level of the game was designed to introduce the player to the general mechanics of the game. The various obstacles that are found along the way (blades, conveyer belts, and acid pools) are reminiscent of a city that is well-developed but at the same time, home to a lot of toxicity, both literally and figuratively. The name of the city is based on the Japanese word for 'future,' further illustrating the more futuristic' part of Isolasia.
 
+### Hidden Forest ###
+
+The second level of the level is a completely different dynamic than the first level. It is a jungle/forest like environment with more moving platforms and new obstacles(falling spikes). It shows a different primitive side of Isolasia than the previous level.
+
 ### Davis ###
 
 The last level is stylistically based on UC Davis using photography from Davis. The squirrels flying from trees to attack are representative of the typical Davis experience. The music would be one of the pastoral pieces by Vaughn Williams, but his works are in copyright. The level design is intended to contain unexpected elements, but without overtly deceptive design.
