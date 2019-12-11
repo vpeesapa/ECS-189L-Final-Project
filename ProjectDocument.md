@@ -166,12 +166,15 @@ The press kit includes screenshots of all the levels that are present as well as
 
 
 ## Game Feel
+Various subtle things were added to make the gameplay experience better for the user.
 
-*Jump* - The player is able to jump higher if they hold the space bar. The player is also able to jump further if they hold the run key Z. We used Unity physics to make our jump feel smoother and realistic by making the player fall faster due to gravity.
+*Level Progression* -  We wanted the continuity of the levels to flow well based on difficulty so that the player can be eased on in the first 1 or 2 levels and then try out more difficult levels once they got the hang of the controls and its dynamics. The levels are essentially ordered from easiest to hardest. 
 
-*Narrative* - We wanted to make our game as immersive as possible by displaying the narrative of the game as soon as the game starts.
+*Narrative*  - We wanted to make our game as immersive as possible by displaying the narrative of the game as soon as the game starts.
 
-*Hitbox* - The hotbox of obstacles were adjusted so that the player doesn't die when the player visually does not collide with obstacles.
+*Hitbox*  - The hotbox of obstacles were adjusted so that the player doesn't die when the player visually does not collide with obstacles.
 
-*Pause Menu* - We added a pause menu to allow the user to pause the game whenever they want.
+*Pause Menu*  - We added a pause menu to allow the user to pause the game whenever they want.
+
+*Jump* -  Jumping is the core mechanic of the game so a lot of time was spent trying to adjust this. We wanted a jump that makes it look like that the player moves somewhat slower upward on the jump rather on downward on the jump making it look like that the player is floating at the maximum height of his jump for a split second. Along with this, a subtle [squeeze effect](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/74b7c59440e6e6b1f6f5a13922ce3baceec1f69a/Assets/Scripts/PlayerController.cs#L178-L202) commonly implemented in several games, especially 2d platformers, is used to make the character feel a bit more bouncy and gives the jump mechanic a little more "juice."
 
