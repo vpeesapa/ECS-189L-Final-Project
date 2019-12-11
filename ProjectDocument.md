@@ -71,7 +71,7 @@ The players movement is done on the 2D plane where the player is able to move le
 
 The background sound in the jungle level is from (Ludum Dare)[http://ludumdare.com/compo/ludum-dare-32/].
 
-*Jump* - The jump sound effect is from a free sound effect from the Unity Asset Store by (Zero Rare)[https://assetstore.unity.com/packages/audio/sound-fx/sound-fx-retro-pack-121743].
+*Jump* - The jump sound effect is from a free sound effect from the Unity Asset Store by (Zero Rare)[https://assetstore.unity.com/packages/audio/sound-fx/sound-fx-retro-pack-121743]
 
 **Describe the implementation of your audio system.**
 
