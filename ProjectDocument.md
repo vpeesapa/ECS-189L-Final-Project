@@ -46,10 +46,15 @@ As a platformer game, we wanted to make our UI simple and as least distracting a
 ## Input
 
 *2D Movement* - Use left and right arrow keys or alterantively A and D keys to move left and right.
+
 *Jump* - The space key is used to jump. Holding the space key longer will result in the player jumping higher.
+
 *Running* - Holding the Z key while moving will make the character move faster. Holding Z while jumping will make the character jump further.
+
 *Interacting with Portals* - Pressing the R key near a portal will allow the player to traverse through levels if they have collected the required number of gems.
+
 *Invinciblity* - Pressing the Control and F1 keys at the same time will enable a cheat mode to make the player become invulnerable to enemies and other obstacles.
+
 *Skip level* - Pressing the Control and F2 keys at the same time will allow the user to skip the current level.
 
 **Add an entry for each platform or input style your project supports.**
