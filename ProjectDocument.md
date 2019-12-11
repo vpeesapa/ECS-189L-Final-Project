@@ -41,7 +41,7 @@ The players movement is done on the 2D plane where the player is able to move le
 
 *Character Sprite* - The player character sprite was made by [Jessica Munguia](https://jesse-m.itch.io/jungle-pack).
 
-*Jungle* - The tiles used in the jungle map and the spikes falling down were made by [Jessica Munguia](https://jesse-m.itch.io/jungle-pack).
+*Jungle* - The tiles used in the jungle map and the falling spikes were made by [Jessica Munguia](https://jesse-m.itch.io/jungle-pack).
 
 ## Input
 
@@ -68,6 +68,7 @@ The players movement is done on the 2D plane where the player is able to move le
 ## Audio
 
 **List your assets including their sources and licenses.**
+The background sound in the jungle level is from (Ludum Dare)[http://ludumdare.com/compo/ludum-dare-32/].
 
 **Describe the implementation of your audio system.**
 An audio source component is attached to the Player object at each level to play the corresponding background sound and the jump sound when the player jumps. In the main menu, an audio source component is attached to the Canvas to play the main menu sound.
