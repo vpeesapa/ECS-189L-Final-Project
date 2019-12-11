@@ -117,10 +117,7 @@ An audio source component is attached to the Player object at each level to play
 
 [Game Trailer](https://www.youtube.com/watch?v=f9yEC4gjdEY)
 
-**Include links to your presskit materials and trailer.**
-
-**Describe how you showcased your work. How did you choose what to show in the trailer? Why did you choose your screenshots?**
-
+The trailer includes a couple clips from each of the levels, and tries to demonstrate the basic game dynamics, as well as some of the interesting design elements in particular levels.
 
 
 ## Game Feel
