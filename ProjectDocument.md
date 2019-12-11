@@ -123,6 +123,7 @@ An audio source component is attached to the Player object at each level to play
 ## Press Kit and Trailer
 
 [Game Trailer](https://www.youtube.com/watch?v=f9yEC4gjdEY)
+
 [Press Kit](https://github.com/vpeesapa/ECS-189L-Final-Project/blob/master/Press%20Kit.pdf)
 
 The trailer includes a couple clips from each of the levels, and tries to demonstrate the basic game dynamics, as well as some of the interesting design elements in particular levels.
